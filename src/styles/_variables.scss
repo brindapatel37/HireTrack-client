@@ -1,0 +1,164 @@
+$primary-background: #344e41;
+$primary-text: #0c1e1a;
+$primary-accent: #a3b18a;
+
+$secondary-background: #dad7cd;
+$secondary-border: #3a5a40;
+
+// .main-container {
+//     background-color: $secondary-background;
+//     color: $primary-text;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 40px;
+//     width: 60%;
+//     margin: auto;
+//     border: 5px solid $primary-accent;
+//     border-radius: 8px;
+//     @include body;
+//     margin-bottom: 32px;
+//   }
+
+/* SCSS HEX */
+$antiflash-white: #f4f5f7ff;
+$nyanza: #d8f3dcff;
+$celadon: #b7e4c7ff;
+$celadon-2: #95d5b2ff;
+$mint: #74c69dff;
+$sea-green: #40916cff;
+$dartmouth-green: #2d6a4fff;
+$brunswick-green: #1b4332ff;
+$dark-green: #081c15ff;
+
+/* SCSS HSL */
+$antiflash-white: hsla(220, 16%, 96%, 1);
+$nyanza: hsla(129, 53%, 90%, 1);
+$celadon: hsla(141, 45%, 81%, 1);
+$celadon-2: hsla(147, 43%, 71%, 1);
+$mint: hsla(150, 42%, 62%, 1);
+$sea-green: hsla(153, 39%, 41%, 1);
+$dartmouth-green: hsla(153, 40%, 30%, 1);
+$brunswick-green: hsla(155, 43%, 18%, 1);
+$dark-green: hsla(159, 56%, 7%, 1);
+
+/* SCSS RGB */
+$antiflash-white: rgba(244, 245, 247, 1);
+$nyanza: rgba(216, 243, 220, 1);
+$celadon: rgba(183, 228, 199, 1);
+$celadon-2: rgba(149, 213, 178, 1);
+$mint: rgba(116, 198, 157, 1);
+$sea-green: rgba(64, 145, 108, 1);
+$dartmouth-green: rgba(45, 106, 79, 1);
+$brunswick-green: rgba(27, 67, 50, 1);
+$dark-green: rgba(8, 28, 21, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(
+  0deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-right: linear-gradient(
+  90deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-bottom: linear-gradient(
+  180deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-left: linear-gradient(
+  270deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-top-right: linear-gradient(
+  45deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-bottom-right: linear-gradient(
+  135deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-top-left: linear-gradient(
+  225deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-bottom-left: linear-gradient(
+  315deg,
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
+$gradient-radial: radial-gradient(
+  #f4f5f7ff,
+  #d8f3dcff,
+  #b7e4c7ff,
+  #95d5b2ff,
+  #74c69dff,
+  #40916cff,
+  #2d6a4fff,
+  #1b4332ff,
+  #081c15ff
+);
