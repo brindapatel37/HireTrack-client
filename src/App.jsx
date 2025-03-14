@@ -1,31 +1,27 @@
 import { useState } from "react";
-import "./App.css";
+import "./App.scss";
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Footer from "../src/components/Footer/Footer";
+import LoginPage from "../src/components/LoginPage/LoginPage";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <h1>HI</h1>
-        {/* <Header /> */}
+        <h1>HI There</h1>
+        <Header />
         <Routes>
-          {/* Warehouses Routes */}
-          {/* <Route path="/warehouse" element={<Warehouses />} />
-          <Route path="/warehouse/:id" element={<WarehouseDetail />} />
-          <Route path="/warehouse/add" element={<AddWarehouse />} />
-          <Route path="/warehouse/:id/edit" element={<EditWarehouse />} /> */}
-
-          {/* Inventory Routes */}
-          {/* <Route path="/inventory" element={<Inventories />} />
-          <Route path="/inventory/:id" element={<InventoryDetail />} />
-          <Route path="/inventory/add" element={<AddInventory />} />
-          <Route path="/inventory/:id/edit" element={<EditInventory />} /> */}
+          <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/jobs/:id" element={<JobsDetailPage />} />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
           {/* Default Route */}
-          {/* <Route path="/" element={<Navigate to="/warehouse" />} /> */}
+          <Route path="/" element={<Navigate to="/jobs" />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </BrowserRouter>
   );

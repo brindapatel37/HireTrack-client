@@ -1,0 +1,147 @@
+@use "typography" as *;
+@use "variables" as *;
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin page-header {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+
+  @include tablet {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
+@mixin subheader {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  font-family: "Montserrat";
+
+  @include tablet {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@mixin labels-links-buttons {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+  font-family: "Poppins";
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@mixin table-header {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  font-family: "Poppins";
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@mixin body-large {
+  font-size: 15px;
+  line-height: 26px;
+  font-weight: 400;
+  font-family: "Poppins";
+
+  @include tablet {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+@mixin body-medium {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: "Poppins";
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@mixin body-small {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: "Poppins";
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+//   @mixin button-basics {
+//     height: 36px;
+//     width: 100%;
+//     text-align: center;
+//     border-radius: 20px;
+//     padding: 0px 16px;
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     @include labels-links-buttons();
+
+//     @include tablet {
+//       height: 38px;
+//       width: auto;
+//     }
+//   }
+
+//   @mixin primary-button {
+//     @include button-basics();
+//     background-color: $primary-indigo;
+//     color: $primary-white;
+
+//     &:hover {
+//       background-color: $background-graphite;
+//     }
+//   }
+
+//   @mixin secondary-button {
+//     @include button-basics();
+//     background-color: $primary-white;
+//     color: $secondary-slate;
+//     border: 1px solid $secondary-cloud;
+
+//     &:hover {
+//       color: $primary-indigo;
+//       border: 1px solid $primary-indigo;
+//     }
+//   }
+
+//   @mixin delete-button {
+//     @include button-basics();
+//     background-color: $supporting-red;
+//     color: $primary-white;
+
+//     &:hover {
+//       background-color: $background-graphite;
+//     }
+//   }
