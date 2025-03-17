@@ -21,15 +21,17 @@ const GuestHeader = () => {
             <div className="gst-nav__text-links">
               <NavLink
                 to="/register"
-                activeClassName="active"
-                className="gst-nav__navlink"
+                className={({ isActive }) =>
+                  isActive ? "gst-nav__navlink active" : "gst-nav__navlink"
+                }
               >
                 <div className="gst-nav__text">Register</div>
               </NavLink>
               <NavLink
                 to="/login"
-                activeClassName="active"
-                className="gst-nav__navlink"
+                className={({ isActive }) =>
+                  isActive ? "gst-nav__navlink active" : "gst-nav__navlink"
+                }
               >
                 <div className="gst-nav__text">Login</div>
               </NavLink>

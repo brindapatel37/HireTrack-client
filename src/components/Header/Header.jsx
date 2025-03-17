@@ -18,23 +18,26 @@ const Header = () => {
             <div className="nav__text-links">
               <NavLink
                 to="/jobs/dashboard"
-                activeClassName="active"
-                className="nav__navlink"
+                className={({ isActive }) =>
+                  isActive ? "nav__navlink active" : "nav__navlink"
+                }
               >
                 <div className="nav__text">Dashboard</div>
               </NavLink>
               <NavLink
                 to="/resume"
-                activeClassName="active"
-                className="nav__navlink"
+                className={({ isActive }) =>
+                  isActive ? "nav__navlink active" : "nav__navlink"
+                }
               >
                 <div className="nav__text">Resume Help</div>
               </NavLink>
             </div>
             <NavLink
               to="/jobs"
-              activeClassName="active"
-              className="nav__navlink"
+              className={({ isActive }) =>
+                isActive ? "nav__navlink active" : "nav__navlink"
+              }
               end
             >
               <div className="nav__icon">
