@@ -3,11 +3,13 @@ import "./LoginPage.scss";
 import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import { useParams } from "react-router-dom";
+import GuestHeader from "../../components/GuestHeader/GuestHeader";
 
 function LoginPage() {
   return (
     <>
-      <h1> HI </h1>
+      <GuestHeader />
+      <h1> HI this is login </h1>
     </>
   );
 }

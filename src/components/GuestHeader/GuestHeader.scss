@@ -1,0 +1,104 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.gst-nav {
+  padding: 1rem;
+  background-color: $lightest-green;
+  position: relative;
+
+  @include tablet {
+    padding: 1.5rem;
+  }
+
+  @include desktop {
+    padding: 1.5rem 2.5rem;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 3rem;
+    }
+  }
+
+  &__logo {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: unset;
+      position: absolute;
+      left: 1.5rem;
+    }
+
+    @include desktop {
+      position: absolute;
+      left: 2.5rem;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--img {
+      width: 2.25rem;
+    }
+
+    &--desc {
+      @include page-header;
+      text-transform: uppercase;
+      color: $dartmouth-green;
+      outline: $sea-green;
+      text-shadow: 0px 0px 8px $celadon-2;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+      gap: 3rem;
+    }
+  }
+  &__text-links {
+    display: flex;
+    gap: 3rem;
+  }
+  &__navlink {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark-green;
+    transition: transform 0.2s ease, color 0.2s ease;
+    @include body-medium;
+
+    &.active {
+      color: $dark-green;
+      font-weight: 600;
+    }
+
+    .gst-nav__text {
+      transition: transform 0.2s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &.active .gst-nav__text {
+      transform: scale(1.1);
+      background-color: rgba(116, 198, 157, 0.2);
+      padding: 0.25rem 0.5rem;
+      border-radius: 10px;
+    }
+  }
+}

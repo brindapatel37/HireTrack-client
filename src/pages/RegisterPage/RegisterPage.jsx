@@ -1,3 +1,4 @@
+import GuestHeader from "../../components/GuestHeader/GuestHeader";
 import "./RegisterPage.scss";
 // import { baseURL } from "../../scripts/utils";
 import React, { useState, useEffect } from "react";
@@ -7,7 +8,8 @@ import React, { useState, useEffect } from "react";
 function RegisterPage() {
   return (
     <>
-      <h1> HI </h1>
+      <GuestHeader />
+      <h1> HI this is register</h1>
     </>
   );
 }
