@@ -10,9 +10,11 @@
     display: flex;
     flex-direction: column;
   }
+
   &__logo {
     padding-bottom: 1rem;
   }
+
   &__link {
     text-decoration: none;
     display: flex;
@@ -31,6 +33,7 @@
       text-shadow: 0px 0px 8px $celadon-2;
     }
   }
+
   &__links {
     display: flex;
     align-items: center;
@@ -44,22 +47,47 @@
     align-items: center;
     justify-content: center;
     color: $dark-green;
+    transition: transform 0.2s ease, color 0.2s ease;
     @include body-medium;
+
+    &.active {
+      color: $dark-green;
+      font-weight: 500;
+    }
+
+    .nav__icon {
+      width: 2.25rem;
+      position: absolute; /* Icon's position remains fixed */
+      top: 1rem;
+      right: 1rem;
+      transition: filter 0.2s ease; /* Smooth color change for the icon */
+    }
+
+    .nav__text {
+      transition: transform 0.2s ease; /* Smooth scaling for the text */
+    }
+
+    &.active .nav__text {
+      transform: scale(1.1); /* Increase the size of the text */
+      background-color: rgba(116, 198, 157, 0.2);
+      padding: 0.25rem 0.5rem;
+      border-radius: 10px;
+    }
+
+    &.active .nav__icon img {
+      filter: brightness(0) saturate(100%) invert(47%) sepia(38%) saturate(532%)
+        hue-rotate(88deg) brightness(97%) contrast(90%); /* Change icon color */
+    }
   }
 
   &__home {
     width: 2.25rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+    // position: absolute;
+    // top: 1rem;
+    // right: 1rem;
 
     &:hover {
       transform: scale(1.3);
     }
   }
-}
-
-.active {
-  color: $dark-green;
-  transform: scale(1.3);
 }
