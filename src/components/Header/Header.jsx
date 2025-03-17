@@ -15,6 +15,22 @@ const Header = () => {
             </Link>
           </div>
           <div className="nav__links">
+            <div className="nav__text-links">
+              <NavLink
+                to="/jobs/dashboard"
+                activeClassName="active"
+                className="nav__navlink"
+              >
+                <div className="nav__text">Dashboard</div>
+              </NavLink>
+              <NavLink
+                to="/resume"
+                activeClassName="active"
+                className="nav__navlink"
+              >
+                <div className="nav__text">Resume Help</div>
+              </NavLink>
+            </div>
             <NavLink
               to="/jobs"
               activeClassName="active"
@@ -24,22 +40,6 @@ const Header = () => {
               <div className="nav__icon">
                 <img src={home} alt="Home icon" className="nav__home" />
               </div>
-            </NavLink>
-
-            <NavLink
-              to="/jobs/dashboard"
-              activeClassName="active"
-              className="nav__navlink"
-            >
-              <div className="nav__text">Dashboard</div>
-            </NavLink>
-
-            <NavLink
-              to="/resume"
-              activeClassName="active"
-              className="nav__navlink"
-            >
-              <div className="nav__text">Resume Help</div>
             </NavLink>
           </div>
         </nav>

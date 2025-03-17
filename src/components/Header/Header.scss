@@ -6,13 +6,39 @@
   background-color: $lightest-green;
   position: relative;
 
+  @include tablet {
+    padding: 1.5rem;
+  }
+
+  @include desktop {
+    padding: 1.5rem 2.5rem;
+  }
+
   &__wrap {
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 3rem;
+    }
   }
 
   &__logo {
     padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: unset;
+      position: absolute;
+      left: 1.5rem;
+    }
+
+    @include desktop {
+      position: absolute;
+      left: 2.5rem;
+    }
   }
 
   &__link {
@@ -38,9 +64,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-  }
 
+    @include tablet {
+      gap: 3rem;
+    }
+  }
+  &__text-links {
+    display: flex;
+    gap: 3rem;
+  }
   &__navlink {
     text-decoration: none;
     display: flex;
@@ -52,23 +84,30 @@
 
     &.active {
       color: $dark-green;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .nav__icon {
       width: 2.25rem;
-      position: absolute; /* Icon's position remains fixed */
+      position: absolute;
       top: 1rem;
       right: 1rem;
-      transition: filter 0.2s ease; /* Smooth color change for the icon */
+      transition: filter 0.2s ease;
+
+      @include tablet {
+        position: unset;
+      }
     }
 
     .nav__text {
-      transition: transform 0.2s ease; /* Smooth scaling for the text */
+      transition: transform 0.2s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
 
     &.active .nav__text {
-      transform: scale(1.1); /* Increase the size of the text */
+      transform: scale(1.1);
       background-color: rgba(116, 198, 157, 0.2);
       padding: 0.25rem 0.5rem;
       border-radius: 10px;
@@ -76,18 +115,18 @@
 
     &.active .nav__icon img {
       filter: brightness(0) saturate(100%) invert(47%) sepia(38%) saturate(532%)
-        hue-rotate(88deg) brightness(97%) contrast(90%); /* Change icon color */
+        hue-rotate(88deg) brightness(97%) contrast(90%);
+      background-color: rgba(116, 198, 157, 0.2);
+      transform: scale(1.1);
+      border-radius: 10px;
     }
   }
 
   &__home {
     width: 2.25rem;
-    // position: absolute;
-    // top: 1rem;
-    // right: 1rem;
 
     &:hover {
-      transform: scale(1.3);
+      transform: scale(1.2);
     }
   }
 }
