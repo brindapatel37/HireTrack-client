@@ -4,12 +4,14 @@ import "./RegisterPage.scss";
 import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import { useParams } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 function RegisterPage() {
   return (
     <>
       <GuestHeader />
       <h1> HI this is register</h1>
+      <Footer />
     </>
   );
 }

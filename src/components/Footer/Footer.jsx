@@ -20,7 +20,7 @@ const Footer = () => {
         </Link>
       </div>
       <div className="footer__connect">
-        <h3 className="footer__desc"> Let's Connect</h3>
+        {/* <h3 className="footer__desc"> Let's Connect</h3> */}
         <div className="footer__socials">
           <a
             href="mailto:brinda.patel.brinda@gmail.com"
@@ -40,13 +40,13 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer__content">
-        <p className="footer__desc">built on & powered by </p>
+        <p className="footer__desc2">built on & powered by </p>
         <div className="footer__icons">
-          <img className="footer__img" src={react} alt="React icon" />
-          <img className="footer__img" src={node} alt="Node JS icon" />
-          <img className="footer__img" src={js} alt="Javascript icon" />
-          <img className="footer__img" src={express} alt="Express icon" />
-          <img className="footer__img" src={knex} alt="Knex icon" />
+          <img className="footer__img2" src={react} alt="React icon" />
+          <img className="footer__img2" src={node} alt="Node JS icon" />
+          <img className="footer__img2" src={js} alt="Javascript icon" />
+          <img className="footer__img2" src={express} alt="Express icon" />
+          <img className="footer__img2" src={knex} alt="Knex icon" />
         </div>
       </div>
       <div className="footer__boiler">
