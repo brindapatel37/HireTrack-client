@@ -1,0 +1,191 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary-black;
+  color: $antiflash-white;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  &__header--name {
+    @include page-header;
+  }
+
+  &__count {
+    @include subheader;
+    color: $celadon;
+  }
+}
+
+/* --- Jobs Container (JIRA-like layout) --- */
+.jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+/* --- Table Header (Fixed at top) --- */
+.jobs__header {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  background-color: $background-graphite;
+  color: $antiflash-white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  font-size: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Sort Icon */
+.jobs__sort-icon {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* --- Individual Job Rows as Cards --- */
+.jobs__row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  background-color: white;
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  align-items: center;
+
+  &:nth-child(even) {
+    background-color: #f8f9fc; // Subtle white variation for contrast
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  }
+}
+
+/* --- Cells and Columns --- */
+.jobs__column {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jobs__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &-label {
+    @include table-header;
+    color: $secondary-slate;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &--first {
+      font-weight: 700;
+    }
+  }
+
+  &-item {
+    @include body-medium;
+    color: $primary-black;
+  }
+}
+
+/* --- Status Badges (JIRA-Inspired) --- */
+.jobs__status {
+  padding: 6px 12px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  width: fit-content;
+  font-size: 13px;
+
+  &.offer-received {
+    background-color: $lightest-green;
+    color: $dark-green;
+  }
+
+  &.applied {
+    background-color: $celadon;
+    color: $dartmouth-green;
+  }
+
+  &.accepted {
+    background-color: $mint;
+    color: $brunswick-green;
+  }
+
+  &.rejected {
+    background-color: #ffdbdb;
+    color: #d63031;
+  }
+
+  &.other-status {
+    background-color: $timberwolf;
+    color: $primary-black;
+  }
+}
+
+/* --- Interactive Hover & Click Effects --- */
+.jobs__link,
+.jobs__name {
+  text-decoration: none;
+  color: $sea-green;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  &:hover {
+    color: $brunswick-green;
+  }
+}
+
+/* --- Responsive Design --- */
+@include tablet {
+  .jobs__row {
+    padding: 20px;
+  }
+}
+
+@include desktop {
+  .jobs__row {
+    padding: 24px;
+  }
+}
+
+.jobs__cell-label {
+  display: none; // Hide labels for all rows except the first
+}
+
+.jobs__row:first-child .jobs__cell-label--first {
+  display: block; // Show labels only in the first row
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding-bottom: 6px;
+}
+
+.jobs__delete {
+  display: flex;
+  justify-content: center;
+}

@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 ReactModal.setAppElement("#root");
 
-const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
+const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -94,7 +94,8 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
       });
       navigate("/jobs");
       addJob(response.data);
-      setFormData("");
+      // fetchJobs();
+      setFormData({});
       closeModal();
     } catch (error) {
       console.error("Error creating job:", error);
