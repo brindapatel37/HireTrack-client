@@ -14,15 +14,15 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    companyName: "",
-    jobTitle: "",
-    jobLocation: "",
-    applicationDate: "",
-    jobStatus: "",
-    jobDescription: "",
-    recruiterPhone: "",
-    recruiterEmail: "",
-    recruiterName: "",
+    company_name: "",
+    job_title: "",
+    job_location: "",
+    application_date: "",
+    job_status: "",
+    job_description: "",
+    recruiter_phone: "",
+    recruiter_email: "",
+    recruiter_name: "",
     salary: "",
     notes: "",
   });
@@ -47,24 +47,25 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.companyName)
-      newErrors.companyName = "Company Name is required";
-    if (!formData.jobTitle) newErrors.jobTitle = "Job Title is required";
-    if (!formData.jobStatus) newErrors.jobStatus = "Job Status is required";
-    if (!validatePhoneNumber(formData.recruiterPhone)) {
-      newErrors.recruiterPhone = "Phone Number must start with +1";
+    if (!formData["company_name"])
+      newErrors["company_name"] = "Company Name is required";
+    if (!formData["job_title"])
+      newErrors["job_title"] = "Job Title is required";
+    if (!formData["job_status"])
+      newErrors["job_status"] = "Job Status is required";
+    if (!validatePhoneNumber(formData["recruiter_phone"])) {
+      newErrors["recruiter_phone"] = "Phone Number must start with +1";
     }
-    if (!validateEmail(formData.recruiterEmail)) {
-      newErrors.recruiterEmail = "Invalid Email";
+    if (!validateEmail(formData["recruiter_email"])) {
+      newErrors["recruiter_email"] = "Invalid Email";
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setFormData({ ...formData, applicationDate: date });
+    setFormData({ ...formData, application_date: date });
   };
 
   const handleSubmit = async (e) => {
@@ -76,8 +77,11 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
         ...formData,
         salary: formData.salary ? parseInt(formData.salary) : null,
       };
-      const token = localStorage.getItem("authToken");
-      await axios.post(`${baseURL}/jobs`, newJob, {
+      const token = localStorage.getItem("token");
+      console.log("Token:", token);
+      console.log("Job Data Being Sent:", newJob);
+
+      const response = await axios.post(`${baseURL}/jobs`, newJob, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -119,26 +123,26 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
             <label>Company Name*</label>
             <input
               type="text"
-              name="companyName"
-              value={formData.companyName}
+              name="company_name"
+              value={formData["company_name"]}
               onChange={handleChange}
-              className={errors.companyName ? "error" : ""}
+              className={errors["company_name"] ? "error" : ""}
             />
-            {errors.companyName && (
-              <span className="error-message">{errors.companyName}</span>
+            {errors["company_name"] && (
+              <span className="error-message">{errors["company_name"]}</span>
             )}
           </div>
           <div className="create-job__form-group">
             <label>Job Title*</label>
             <input
               type="text"
-              name="jobTitle"
-              value={formData.jobTitle}
+              name="job_title"
+              value={formData["job_title"]}
               onChange={handleChange}
-              className={errors.jobTitle ? "error" : ""}
+              className={errors["job_title"] ? "error" : ""}
             />
-            {errors.jobTitle && (
-              <span className="error-message">{errors.jobTitle}</span>
+            {errors["job_title"] && (
+              <span className="error-message">{errors["job_title"]}</span>
             )}
           </div>
           <div className="create-job__form-group">
@@ -154,10 +158,10 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
           <div className="create-job__form-group">
             <label>Application Status*</label>
             <select
-              name="jobStatus"
-              value={formData.jobStatus}
+              name="job_status"
+              value={formData["job_status"]}
               onChange={handleChange}
-              className={errors.jobStatus ? "error" : ""}
+              className={errors["job_status"] ? "error" : ""}
             >
               <option value="">Please select</option>
               {status.map((statusOption, index) => (
@@ -166,15 +170,15 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
                 </option>
               ))}
             </select>
-            {errors.jobStatus && (
-              <span className="error-message">{errors.jobStatus}</span>
+            {errors["job_status"] && (
+              <span className="error-message">{errors["job_status"]}</span>
             )}
           </div>
           <div className="create-job__form-group">
             <label className="create-job__label">Job Description</label>
             <textarea
-              name="jobDescription"
-              value={formData.jobDescription}
+              name="job_description"
+              value={formData["job_description"]}
               onChange={handleChange}
               className="create-job__input"
               placeholder="Paste relevant job description details..."
@@ -190,8 +194,8 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
               <label className="create-job__label">Recruiter Name</label>
               <input
                 type="text"
-                name="recruiterName"
-                value={formData.recruiterName}
+                name="recruiter_name"
+                value={formData["recruiter_name"]}
                 onChange={handleChange}
                 className="create-job__input"
                 placeholder="Optional. Ex. Jane Doe"
@@ -201,17 +205,17 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
               <label className="create-job__label">Recruiter Email</label>
               <input
                 type="text"
-                name="recruiterEmail"
-                value={formData.recruiterEmail}
+                name="recruiter_email"
+                value={formData["recruiter_email"]}
                 onChange={handleChange}
                 className={`create-job__input ${
-                  errors.recruiterEmail ? "create-job__input--error" : ""
+                  errors["recruiter_email"] ? "create-job__input--error" : ""
                 }`}
                 placeholder="Optional Ex. jane.doe@gmail.com"
               />
-              {errors.recruiterEmail && (
+              {errors["recruiter_email"] && (
                 <span className="create-job__error-message">
-                  {errors.recruiterEmail}
+                  {errors["recruiter_email"]}
                 </span>
               )}
             </div>
@@ -219,17 +223,17 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
               <label className="create-job__label">Recruiter Phone</label>
               <input
                 type="text"
-                name="recruiterPhone"
-                value={formData.recruiterPhone}
+                name="recruiter_phone"
+                value={formData["recruiter_phone"]}
                 onChange={handleChange}
                 className={`create-job__input ${
-                  errors.recruiterPhone ? "create-job__input--error" : ""
+                  errors["recruiter_phone"] ? "create-job__input--error" : ""
                 }`}
                 placeholder="Optional. Please ensure number starts with +1"
               />
-              {errors.recruiterPhone && (
+              {errors["recruiter_phone"] && (
                 <span className="create-job__error-message">
-                  {errors.recruiterPhone}
+                  {errors["recruiter_phone"]}
                 </span>
               )}
             </div>
