@@ -53,10 +53,16 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
       newErrors["job_title"] = "Job Title is required";
     if (!formData["job_status"])
       newErrors["job_status"] = "Job Status is required";
-    if (!validatePhoneNumber(formData["recruiter_phone"])) {
+    if (
+      formData["recruiter_phone"] &&
+      !validatePhoneNumber(formData["recruiter_phone"])
+    ) {
       newErrors["recruiter_phone"] = "Phone Number must start with +1";
     }
-    if (!validateEmail(formData["recruiter_email"])) {
+    if (
+      formData["recruiter_email"] &&
+      !validateEmail(formData["recruiter_email"])
+    ) {
       newErrors["recruiter_email"] = "Invalid Email";
     }
     setErrors(newErrors);
@@ -88,6 +94,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
       });
       navigate("/jobs");
       addJob(response.data);
+      setFormData("");
       closeModal();
     } catch (error) {
       console.error("Error creating job:", error);
@@ -97,7 +104,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value || "" });
   };
 
   return (
@@ -117,72 +124,78 @@ const CreateJobModal = ({ isOpen, closeModal, addJob }) => {
             <img src={closeIcon} alt="Close Button" />
           </button>
         </div>
-        <div className="create-job__divider"></div>
+
         <form className="create-job__form" onSubmit={handleSubmit}>
-          <div className="create-job__form-group">
-            <label>Company Name*</label>
-            <input
-              type="text"
-              name="company_name"
-              value={formData["company_name"]}
-              onChange={handleChange}
-              className={errors["company_name"] ? "error" : ""}
-            />
-            {errors["company_name"] && (
-              <span className="error-message">{errors["company_name"]}</span>
-            )}
-          </div>
-          <div className="create-job__form-group">
-            <label>Job Title*</label>
-            <input
-              type="text"
-              name="job_title"
-              value={formData["job_title"]}
-              onChange={handleChange}
-              className={errors["job_title"] ? "error" : ""}
-            />
-            {errors["job_title"] && (
-              <span className="error-message">{errors["job_title"]}</span>
-            )}
-          </div>
-          <div className="create-job__form-group">
-            <label>Application Due Date</label>
-            <DatePicker
-              selected={selectedDate}
-              dateFormat="MM-dd-yyyy"
-              onChange={handleDateChange}
-              className="create-job__input"
-              placeholderText="Select the application due date"
-            />
-          </div>
-          <div className="create-job__form-group">
-            <label>Application Status*</label>
-            <select
-              name="job_status"
-              value={formData["job_status"]}
-              onChange={handleChange}
-              className={errors["job_status"] ? "error" : ""}
-            >
-              <option value="">Please select</option>
-              {status.map((statusOption, index) => (
-                <option key={index} value={statusOption}>
-                  {statusOption}
-                </option>
-              ))}
-            </select>
-            {errors["job_status"] && (
-              <span className="error-message">{errors["job_status"]}</span>
-            )}
-          </div>
-          <div className="create-job__form-group">
-            <label className="create-job__label">Job Description</label>
-            <textarea
-              name="job_description"
-              value={formData["job_description"]}
-              onChange={handleChange}
-              className="create-job__input"
-              placeholder="Paste relevant job description details..."
-            />
+          <div className="create-job__divider"></div>
+          <div className="create-job__divider-horizontal"></div>
+          <div className="create-job__divider-vertical"></div>
+          <div className="create-job__section">
+            <h2 className="create-job__section-title">Company Details</h2>
+            <div className="create-job__form-group">
+              <label>Company Name*</label>
+              <input
+                type="text"
+                name="company_name"
+                value={formData["company_name"]}
+                onChange={handleChange}
+                className={errors["company_name"] ? "error" : ""}
+              />
+              {errors["company_name"] && (
+                <span className="error-message">{errors["company_name"]}</span>
+              )}
+            </div>
+            <div className="create-job__form-group">
+              <label>Job Title*</label>
+              <input
+                type="text"
+                name="job_title"
+                value={formData["job_title"]}
+                onChange={handleChange}
+                className={errors["job_title"] ? "error" : ""}
+              />
+              {errors["job_title"] && (
+                <span className="error-message">{errors["job_title"]}</span>
+              )}
+            </div>
+            <div className="create-job__form-group">
+              <label>Application Due Date</label>
+              <DatePicker
+                selected={selectedDate}
+                dateFormat="MM-dd-yyyy"
+                onChange={handleDateChange}
+                className="create-job__input"
+                placeholderText="Select the application due date"
+              />
+            </div>
+            <div className="create-job__form-group">
+              <label>Application Status*</label>
+              <select
+                name="job_status"
+                value={formData["job_status"]}
+                onChange={handleChange}
+                className={errors["job_status"] ? "error" : ""}
+              >
+                <option value="">Please select</option>
+                {status.map((statusOption, index) => (
+                  <option key={index} value={statusOption}>
+                    {statusOption}
+                  </option>
+                ))}
+              </select>
+              {errors["job_status"] && (
+                <span className="error-message">{errors["job_status"]}</span>
+              )}
+            </div>
+            <div className="create-job__form-group">
+              <label className="create-job__label">Job Description</label>
+              <textarea
+                name="job_description"
+                value={formData["job_description"]}
+                onChange={handleChange}
+                className="create-job__input"
+                placeholder="Paste relevant job description details..."
+              />
+            </div>
           </div>
           <div className="create-job__divider-horizontal"></div>
           <div className="create-job__divider-vertical"></div>
