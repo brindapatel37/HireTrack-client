@@ -19,13 +19,27 @@ export default function JobsTable({ jobs, setJobs }) {
   };
 
   const handleSave = async () => {
-    console.log("Edited Job Data:", editedJob);
+    setEditingField(null);
 
-    if (editedJob.application_date) {
-      editedJob.application_date = new Date(editedJob.application_date)
+    // 🔥 Ensure we're using the latest state update
+    setJobs((prevJobs) =>
+      prevJobs.map((job) =>
+        job.id === editingField.jobId ? { ...job, ...editedJob } : job
+      )
+    );
+    console.log("Edited Job Data BEFORE API Call:", { ...editedJob });
+    const updatedJob = { ...editedJob };
+
+    if (updatedJob.application_date) {
+      updatedJob.application_date = new Date(updatedJob.application_date)
         .toISOString()
-        .split("T")[0]; // Get only the date part (YYYY-MM-DD)
+        .split("T")[0]; // Convert to YYYY-MM-DD
     }
+
+    setTimeout(() => {
+      console.log("Final Edited Job BEFORE Saving:", updatedJob);
+    }, 0);
+
     try {
       const token = localStorage.getItem("token");
       await axios.patch(`${baseURL}/jobs/${editingField.jobId}`, editedJob, {
@@ -34,13 +48,31 @@ export default function JobsTable({ jobs, setJobs }) {
           "Content-Type": "application/json",
         },
       });
-      setJobs(
-        jobs.map((job) => (job.id === editingField.jobId ? editedJob : job))
+      // ✅ Ensure UI reflects changes by updating `jobs`
+      setJobs((prevJobs) =>
+        prevJobs.map((job) =>
+          job.id === editingField.jobId ? updatedJob : job
+        )
       );
-      setEditingField(null);
+      console.log("Updated Job Data AFTER API Call:", updatedJob);
     } catch (e) {
       console.log("Error saving job edits:", e);
       alert("Unable to update job. Please try again.");
+    }
+  };
+
+  const handleDelete = async (jobId) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(`${baseURL}/jobs/${jobId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      setJobs((prevJobs) => prevJobs.filter((job) => job.id !== jobId));
+    } catch (e) {
+      console.log("Error deleting warehouse:", e);
     }
   };
 
@@ -119,6 +151,11 @@ export default function JobsTable({ jobs, setJobs }) {
                   ) : (
                     job.company_name
                   )}
+                  <div className="jobs__arrow">
+                    <Link to={`/jobs/${job.id}`} className="jobs__link">
+                      <img src={chevronButton} alt="Arrow" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -260,19 +297,33 @@ export default function JobsTable({ jobs, setJobs }) {
                 >
                   {editingField?.jobId === job.id &&
                   editingField?.field === "job_status" ? (
-                    <input
-                      type="text"
-                      value={editedJob.job_status}
-                      onChange={(e) =>
-                        setEditedJob({
-                          ...editedJob,
-                          job_status: e.target.value,
-                        })
-                      }
-                      onBlur={handleSave}
-                      onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    <select
+                      value={editedJob.job_status || ""}
+                      onChange={(e) => {
+                        console.log("Updated Job Status:", e.target.value);
+                        const newStatus = e.target.value;
+                        setEditedJob((prev) => ({
+                          ...prev,
+                          job_status: newStatus,
+                        }));
+                      }}
+                      onBlur={handleSave} // Save when clicking outside
+                      onKeyDown={(e) => e.key === "Enter" && handleSave()} // Save on Enter
                       autoFocus
-                    />
+                    >
+                      <option value="Application in progress">
+                        Application in progress
+                      </option>
+                      <option value="Applied">Applied</option>
+                      <option value="Interviewing">Interviewing</option>
+                      <option value="Final Interview">Final Interview</option>
+                      <option value="Offer Received">Offer Received</option>
+                      <option value="Negotiating">Negotiating</option>
+                      <option value="Accepted">Accepted</option>
+                      <option value="Rejected">Rejected</option>
+                      <option value="Withdrawn">Withdrawn</option>
+                      <option value="Ghosted">Ghosted</option>
+                    </select>
                   ) : (
                     job.job_status
                   )}
@@ -348,7 +399,7 @@ export default function JobsTable({ jobs, setJobs }) {
                   className="jobs__delete--icon"
                   src={deleteButton}
                   alt="Delete"
-                  onClick={() => handleDelete(job)}
+                  onClick={() => handleDelete(job.id)}
                 />
               </div>
             </div>

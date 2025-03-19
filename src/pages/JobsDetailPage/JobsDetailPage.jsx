@@ -5,12 +5,13 @@ import React, { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-
+import JobDetails from "../../components/JobDetails/JobDetails";
 function JobsDetailPage() {
   return (
     <>
       <Header />
-      <h1> HI Jobsdetail Page </h1>
+      <h1> Hi Jobs detail Page </h1>
+      <JobDetails />
       <Footer />
     </>
   );
