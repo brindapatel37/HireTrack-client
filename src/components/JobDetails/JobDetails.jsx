@@ -120,15 +120,16 @@ export default function JobDetails() {
           </div>
         </div>
         <div className="details__main">
-          <div className="details__company-info">
-            <div className="jobs__cell">
-              <div className="jobs__cell-label">Company </div>
+          <div className="details__main-info">
+            <h2 className="details__title">Company Details</h2>
+            <div className="details__cell">
+              <div className="details__cell-label">Company </div>
 
               <div
-                className="jobs__cell-item jobs__name"
+                className="details__cell-item details__name"
                 onClick={() => handleFieldClick("company_name")}
               >
-                {editingField?.field === "company_name" ? ( // ✅ Corrected condition
+                {editingField?.field === "company_name" ? (
                   <input
                     type="text"
                     value={editedJob.company_name || ""}
@@ -147,9 +148,313 @@ export default function JobDetails() {
                 )}
               </div>
             </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Job Title </div>
+
+              <div
+                className="details__cell-item details__title"
+                onClick={() => handleFieldClick("job_title")}
+              >
+                {editingField?.field === "job_title" ? (
+                  <input
+                    type="text"
+                    value={editedJob.job_title || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        job_title: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.job_title
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Job Location </div>
+
+              <div
+                className="details__cell-item details__location"
+                onClick={() => handleFieldClick("job_location")}
+              >
+                {editingField?.field === "job_location" ? (
+                  <input
+                    type="text"
+                    value={editedJob.job_location || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        job_location: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.job_location
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Application Due Date </div>
+
+              <div
+                className="details__cell-item details__date"
+                onClick={() => handleFieldClick("application_date")}
+              >
+                {editingField?.field === "application_date" ? (
+                  <input
+                    type="text"
+                    value={editedJob.application_date || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        application_date: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  new Date(job.application_date).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Application Status </div>
+
+              <div
+                className={`details__cell-item details__status ${
+                  job.job_status === "Offer Received"
+                    ? "offer-received"
+                    : job.job_status === "Applied"
+                    ? "applied"
+                    : job.job_status === "Accepted"
+                    ? "Accepted"
+                    : job.job_status === "Rejected"
+                    ? "rejected"
+                    : "other-status"
+                }`}
+                onClick={() => handleFieldClick("job_status")}
+              >
+                {editingField?.field === "job_status" ? (
+                  <select
+                    value={editedJob.job_status || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        job_status: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  >
+                    <option value="Application in progress">
+                      Application in progress
+                    </option>
+                    <option value="Applied">Applied</option>
+                    <option value="Interviewing">Interviewing</option>
+                    <option value="Final Interview">Final Interview</option>
+                    <option value="Offer Received">Offer Received</option>
+                    <option value="Negotiating">Negotiating</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Withdrawn">Withdrawn</option>
+                    <option value="Ghosted">Ghosted</option>
+                  </select>
+                ) : (
+                  job.job_status
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Job Description </div>
+              <div
+                className="details__cell-item details__description"
+                onClick={() => handleFieldClick("job_description")}
+              >
+                {editingField?.field === "job_description" ? (
+                  <input
+                    type="text"
+                    value={editedJob.job_description || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        job_description: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.job_description
+                )}
+              </div>
+            </div>
           </div>
           <div className="details__additional-info">
-            <h1>hi</h1>
+            <h2 className="details__title">Additional Information</h2>
+            <div className="details__cell">
+              <div className="details__cell-label">Recruiter Name </div>
+              <div
+                className="details__cell-item details__recruiter-name"
+                onClick={() => handleFieldClick("recruiter_name")}
+              >
+                {editingField?.field === "recruiter_name" ? (
+                  <input
+                    type="text"
+                    value={editedJob.recruiter_name || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        recruiter_name: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.recruiter_name
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Recruiter Email </div>
+              <div
+                className="details__cell-item details__email"
+                onClick={() => handleFieldClick("recruiter_email")}
+              >
+                {editingField?.field === "recruiter_email" ? (
+                  <input
+                    type="text"
+                    value={editedJob.recruiter_email || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        recruiter_email: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.recruiter_email
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Recruiter Phone </div>
+              <div
+                className="details__cell-item details__phone"
+                onClick={() => handleFieldClick("recruiter_phone")}
+              >
+                {editingField?.field === "recruiter_phone" ? (
+                  <input
+                    type="text"
+                    value={editedJob.recruiter_phone || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        recruiter_phone: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.recruiter_phone
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Salary </div>
+              <div
+                className="details__cell-item details__salary"
+                onClick={() => handleFieldClick("salary")}
+              >
+                {editingField?.field === "salary" ? (
+                  <input
+                    type="number"
+                    value={editedJob.salary || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        salary: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.salary
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Job Description </div>
+              <div
+                className="details__cell-item details__description"
+                onClick={() => handleFieldClick("job_description")}
+              >
+                {editingField?.field === "job_description" ? (
+                  <input
+                    type="text"
+                    value={editedJob.job_description || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        job_description: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.job_description
+                )}
+              </div>
+            </div>
+            <div className="details__cell">
+              <div className="details__cell-label">Notes</div>
+              <div
+                className="details__cell-item details__notes"
+                onClick={() => handleFieldClick("notes")}
+              >
+                {editingField?.field === "notes" ? (
+                  <textarea
+                    value={editedJob.notes || ""}
+                    onChange={(e) =>
+                      setEditedJob({
+                        ...editedJob,
+                        notes: e.target.value,
+                      })
+                    }
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
+                    autoFocus
+                  />
+                ) : (
+                  job.notes
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

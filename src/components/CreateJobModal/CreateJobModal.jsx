@@ -90,11 +90,11 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
       const response = await axios.post(`${baseURL}/jobs`, newJob, {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
       navigate("/jobs");
       addJob(response.data);
-      // fetchJobs();
       setFormData({});
       closeModal();
     } catch (error) {
@@ -259,7 +259,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 value={formData.salary}
                 onChange={handleChange}
                 className="create-job__input"
-                placeholder="Enter salary information, if available"
+                placeholder="Enter salary, if available"
               />
             </div>
             <div className="create-job__form-group">
