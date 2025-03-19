@@ -29,7 +29,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState([
-    "Application in progress",
+    "In-progress",
     "Applied",
     "Interviewing",
     "Final Interview",
@@ -131,7 +131,6 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
         </div>
 
         <form className="create-job__form" onSubmit={handleSubmit}>
-          <div className="create-job__divider"></div>
           <div className="create-job__divider--vertical"></div>
           <div className="create-job__section">
             <h2 className="create-job__section-title">Company Details</h2>
@@ -142,10 +141,14 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 name="company_name"
                 value={formData["company_name"]}
                 onChange={handleChange}
-                className={errors["company_name"] ? "error" : "company-name"}
+                className={
+                  errors["company_name"] ? "error company-name" : "company-name"
+                }
               />
               {errors["company_name"] && (
-                <span className="error-message">{errors["company_name"]}</span>
+                <span className="create-job__input--error">
+                  {errors["company_name"]}
+                </span>
               )}
             </div>
             <div className="create-job__form-group">
@@ -155,10 +158,14 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 name="job_title"
                 value={formData["job_title"]}
                 onChange={handleChange}
-                className={errors["job_title"] ? "error" : "job-title"}
+                className={
+                  errors["job_title"] ? "error job-title" : "job-title"
+                }
               />
               {errors["job_title"] && (
-                <span className="error-message">{errors["job_title"]}</span>
+                <span className="create-job__input--error">
+                  {errors["job_title"]}
+                </span>
               )}
             </div>
             <div className="create-job__form-group">
@@ -177,9 +184,11 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 name="job_status"
                 value={formData["job_status"]}
                 onChange={handleChange}
-                className={errors["job_status"] ? "error" : "job-status"}
+                className={
+                  errors["job_status"] ? "error job-status" : "job-status"
+                }
               >
-                <option value=""></option>
+                <option value="">{status[0]}</option>
                 {status.map((statusOption, index) => (
                   <option key={index} value={statusOption}>
                     {statusOption}
@@ -187,7 +196,9 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 ))}
               </select>
               {errors["job_status"] && (
-                <span className="error-message">{errors["job_status"]}</span>
+                <span className="create-job__input--error">
+                  {errors["job_status"]}
+                </span>
               )}
             </div>
             <div className="create-job__form-group">
@@ -202,7 +213,6 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
             </div>
           </div>
           <div className="create-job__divider--horizontal"></div>
-          <div className="create-job__divider--vertical"></div>
           <div className="create-job__section">
             <h2 className="create-job__section-title">
               Additional Information
@@ -225,11 +235,11 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 value={formData["recruiter_email"]}
                 onChange={handleChange}
                 className={`create-job__input ${
-                  errors["recruiter_email"] ? "create-job__input--error" : ""
+                  errors["recruiter_email"] ? "error" : ""
                 }`}
               />
               {errors["recruiter_email"] && (
-                <span className="create-job__error-message">
+                <span className="create-job__input--error">
                   {errors["recruiter_email"]}
                 </span>
               )}
@@ -242,12 +252,12 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 value={formData["recruiter_phone"]}
                 onChange={handleChange}
                 className={`create-job__input ${
-                  errors["recruiter_phone"] ? "create-job__input--error" : ""
+                  errors["recruiter_phone"] ? "error" : ""
                 }`}
                 placeholder="Number must start with +1"
               />
               {errors["recruiter_phone"] && (
-                <span className="create-job__error-message">
+                <span className="create-job__input--error">
                   {errors["recruiter_phone"]}
                 </span>
               )}

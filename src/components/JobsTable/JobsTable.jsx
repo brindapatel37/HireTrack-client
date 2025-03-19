@@ -311,9 +311,7 @@ export default function JobsTable({ jobs, setJobs }) {
                       onKeyDown={(e) => e.key === "Enter" && handleSave()} // Save on Enter
                       autoFocus
                     >
-                      <option value="Application in progress">
-                        Application in progress
-                      </option>
+                      <option value="In progress">In-progress</option>
                       <option value="Applied">Applied</option>
                       <option value="Interviewing">Interviewing</option>
                       <option value="Final Interview">Final Interview</option>

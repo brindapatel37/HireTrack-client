@@ -12,6 +12,10 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  outline: none;
+  margin: auto;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
   z-index: 9999; /* Makes sure it's above other elements */
 }
 
@@ -22,8 +26,20 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  max-width: 600px;
+  max-width: 95vw;
+  // max-height: 95vh;
   z-index: 10000;
+  outline: none;
+  position: relative;
+
+  @include tablet {
+    max-width: 75vw;
+  }
+
+  @include desktop {
+    max-width: 70vw;
+    padding: 2rem;
+  }
 
   &__header {
     @include subheader;
@@ -34,9 +50,6 @@
     align-items: center;
     border-bottom: 1px solid $secondary-slate;
     padding-bottom: 1rem;
-    // padding-left: 0.25rem;
-
-    // background-color: $dark-green;
   }
 
   &__title {
@@ -55,10 +68,68 @@
     &:hover {
       transform: scale(1.2);
       background-color: $timberwolf;
+      cursor: pointer;
     }
 
     &--button {
       width: 1.5rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 1rem;
+    position: relative;
+
+    @include desktop {
+      justify-content: flex-end;
+      gap: 2rem;
+      padding-top: 2rem;
+    }
+  }
+
+  &__cancel {
+    @include labels-links-buttons;
+    background-color: $isabelline;
+    border: 1px $timberwolf solid;
+    text-align: center;
+    border-radius: 20px;
+    width: 5rem;
+    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover,
+    &:focus {
+      background-color: #c94515;
+      color: white;
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+
+  &__save {
+    @include labels-links-buttons;
+    background-color: $isabelline;
+    border: 1px $timberwolf solid;
+    text-align: center;
+    border-radius: 20px;
+    width: 5rem;
+    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover,
+    &:focus {
+      background-color: $sea-green;
+      color: white;
+      transform: scale(1.1);
+      cursor: pointer;
     }
   }
 }
@@ -69,14 +140,24 @@
     flex-direction: column;
     position: relative;
     padding: 1rem 0;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-top: 2rem;
+    }
   }
   &__divider {
     &--horizontal {
-      border: 1px $secondary-slate solid;
+      border-bottom: 1px $secondary-slate solid;
       margin: 1rem 0;
+
+      @include desktop {
+        // display: none;
+        border-right: 1px $secondary-slate solid;
+        margin: 1rem;
+      }
     }
-    // &--vertical {
-    // }
   }
 
   &__section {
@@ -84,11 +165,20 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+
+    @include desktop {
+      width: 100%;
+      padding: 0 2rem;
+    }
   }
 
   &__section-title {
     @include body-large;
     font-weight: 600;
+
+    @include desktop {
+      padding-bottom: 1rem;
+    }
   }
 
   &__form-group {
@@ -96,21 +186,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-    padding-bottom: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
     width: 100%;
   }
   &__label {
     width: 50%;
+    flex-basis: 40%;
+    display: block;
   }
   &__input {
     @include body-small;
-    border-radius: 8px;
+    border-radius: 16px;
     width: 50vw;
+    flex-basis: 50%;
     padding: 8px;
     border: 1px solid $timberwolf;
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
     &:focus {
       border: 1px solid $celadon-2;
+      outline: none;
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    &--error {
+      @include body-small;
+      color: #c94515;
+      display: flex;
+      flex-basis: 100%;
+      justify-content: flex-end;
+      align-items: left;
+      padding-top: 0.25rem;
+    }
+
+    @include desktop {
+      width: unset;
+      width: 15vw;
     }
   }
 }
@@ -120,16 +235,34 @@
 .job-status,
 .app-date {
   @include body-small;
-  border-radius: 8px;
+  border-radius: 16px;
   width: 50vw;
+  flex-basis: 50%;
   padding: 8px;
   border: 1px solid $timberwolf;
 
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
   &:focus {
     border: 1px solid $celadon-2;
+    outline: none;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  @include desktop {
+    width: unset;
+    width: 15vw;
   }
 }
 
 .app-date {
-  max-width: 45vw; //FIXME: WHY DOESN:T IT WORK?
+  max-width: 44vw; //FIXME: WHY DOESN:T IT WORK?
+  flex-basis: 40% !important;
+}
+
+.error {
+  border-color: #c94515;
 }
