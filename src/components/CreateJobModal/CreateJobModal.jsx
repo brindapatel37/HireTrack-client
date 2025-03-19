@@ -120,63 +120,66 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
     >
       <div className="create-job">
         <div className="create-job-modal__header">
-          <h2 className="create-job-modal__title">Create new Job</h2>
+          <h2 className="create-job-modal__title">Create New Job</h2>
           <button className="create-job-modal__close" onClick={closeModal}>
-            <img src={closeIcon} alt="Close Button" />
+            <img
+              src={closeIcon}
+              alt="Close Button"
+              className="create-job-modal__close--button"
+            />
           </button>
         </div>
 
         <form className="create-job__form" onSubmit={handleSubmit}>
           <div className="create-job__divider"></div>
-          <div className="create-job__divider-horizontal"></div>
-          <div className="create-job__divider-vertical"></div>
+          <div className="create-job__divider--vertical"></div>
           <div className="create-job__section">
             <h2 className="create-job__section-title">Company Details</h2>
             <div className="create-job__form-group">
-              <label>Company Name*</label>
+              <label className="create-job__label">Company Name* </label>
               <input
                 type="text"
                 name="company_name"
                 value={formData["company_name"]}
                 onChange={handleChange}
-                className={errors["company_name"] ? "error" : ""}
+                className={errors["company_name"] ? "error" : "company-name"}
               />
               {errors["company_name"] && (
                 <span className="error-message">{errors["company_name"]}</span>
               )}
             </div>
             <div className="create-job__form-group">
-              <label>Job Title*</label>
+              <label className="create-job__label">Job Title* </label>
               <input
                 type="text"
                 name="job_title"
                 value={formData["job_title"]}
                 onChange={handleChange}
-                className={errors["job_title"] ? "error" : ""}
+                className={errors["job_title"] ? "error" : "job-title"}
               />
               {errors["job_title"] && (
                 <span className="error-message">{errors["job_title"]}</span>
               )}
             </div>
             <div className="create-job__form-group">
-              <label>Application Due Date</label>
+              <label className="create-job__label">Application Due Date</label>
               <DatePicker
                 selected={selectedDate}
                 dateFormat="MM-dd-yyyy"
                 onChange={handleDateChange}
-                className="create-job__input"
-                placeholderText="Select the application due date"
+                className="create-job__input app-date"
+                placeholderText="Select due date"
               />
             </div>
             <div className="create-job__form-group">
-              <label>Application Status*</label>
+              <label className="create-job__label">Application Status* </label>
               <select
                 name="job_status"
                 value={formData["job_status"]}
                 onChange={handleChange}
-                className={errors["job_status"] ? "error" : ""}
+                className={errors["job_status"] ? "error" : "job-status"}
               >
-                <option value="">Please select</option>
+                <option value=""></option>
                 {status.map((statusOption, index) => (
                   <option key={index} value={statusOption}>
                     {statusOption}
@@ -188,35 +191,34 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
               )}
             </div>
             <div className="create-job__form-group">
-              <label className="create-job__label">Job Description</label>
+              <label className="create-job__label">Job Description </label>
               <textarea
                 name="job_description"
                 value={formData["job_description"]}
                 onChange={handleChange}
                 className="create-job__input"
-                placeholder="Paste relevant job description details..."
+                placeholder="Paste relevant job description..."
               />
             </div>
           </div>
-          <div className="create-job__divider-horizontal"></div>
-          <div className="create-job__divider-vertical"></div>
+          <div className="create-job__divider--horizontal"></div>
+          <div className="create-job__divider--vertical"></div>
           <div className="create-job__section">
             <h2 className="create-job__section-title">
               Additional Information
             </h2>
             <div className="create-job__form-group">
-              <label className="create-job__label">Recruiter Name</label>
+              <label className="create-job__label">Recruiter Name </label>
               <input
                 type="text"
                 name="recruiter_name"
                 value={formData["recruiter_name"]}
                 onChange={handleChange}
                 className="create-job__input"
-                placeholder="Optional. Ex. Jane Doe"
               />
             </div>
             <div className="create-job__form-group">
-              <label className="create-job__label">Recruiter Email</label>
+              <label className="create-job__label">Recruiter Email </label>
               <input
                 type="text"
                 name="recruiter_email"
@@ -225,7 +227,6 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 className={`create-job__input ${
                   errors["recruiter_email"] ? "create-job__input--error" : ""
                 }`}
-                placeholder="Optional Ex. jane.doe@gmail.com"
               />
               {errors["recruiter_email"] && (
                 <span className="create-job__error-message">
@@ -234,7 +235,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
               )}
             </div>
             <div className="create-job__form-group">
-              <label className="create-job__label">Recruiter Phone</label>
+              <label className="create-job__label">Recruiter Phone </label>
               <input
                 type="text"
                 name="recruiter_phone"
@@ -243,7 +244,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 className={`create-job__input ${
                   errors["recruiter_phone"] ? "create-job__input--error" : ""
                 }`}
-                placeholder="Optional. Please ensure number starts with +1"
+                placeholder="Number must start with +1"
               />
               {errors["recruiter_phone"] && (
                 <span className="create-job__error-message">
@@ -252,7 +253,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
               )}
             </div>
             <div className="create-job__form-group">
-              <label className="create-job__label">Salary</label>
+              <label className="create-job__label">Salary </label>
               <input
                 type="number"
                 name="salary"
@@ -263,7 +264,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
               />
             </div>
             <div className="create-job__form-group">
-              <label className="create-job__label">Notes</label>
+              <label className="create-job__label">Notes </label>
               <textarea
                 name="notes"
                 value={formData.notes}

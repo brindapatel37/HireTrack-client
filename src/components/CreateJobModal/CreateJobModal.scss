@@ -2,24 +2,134 @@
 @use "../../styles/variables" as *;
 
 .create-job-modal-overlay {
-  position: fixed; /* Fixes the overlay in place */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   z-index: 9999; /* Makes sure it's above other elements */
 }
 
 .create-job-modal {
-  position: absolute; /* Ensures modal is placed correctly inside the overlay */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centers the modal on the screen */
   background-color: white;
-  padding: 20px;
+  padding: 1.5rem;
   border-radius: 8px;
-  width: 80%; /* Adjust as needed */
-  max-width: 600px; /* Optional: Sets a max width for the modal */
-  z-index: 10000; /* Higher z-index to ensure it appears above other content */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 600px;
+  z-index: 10000;
+
+  &__header {
+    @include subheader;
+    font-weight: 700; //fixme why isn't this working?
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $secondary-slate;
+    padding-bottom: 1rem;
+    // padding-left: 0.25rem;
+
+    // background-color: $dark-green;
+  }
+
+  &__title {
+    @include subheader;
+  }
+
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $isabelline;
+    border: 1px $timberwolf solid;
+    border-radius: 4px;
+    padding: 0.1rem;
+
+    &:hover {
+      transform: scale(1.2);
+      background-color: $timberwolf;
+    }
+
+    &--button {
+      width: 1.5rem;
+    }
+  }
+}
+
+.create-job {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 1rem 0;
+  }
+  &__divider {
+    &--horizontal {
+      border: 1px $secondary-slate solid;
+      margin: 1rem 0;
+    }
+    // &--vertical {
+    // }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  &__section-title {
+    @include body-large;
+    font-weight: 600;
+  }
+
+  &__form-group {
+    @include body-medium;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+  }
+  &__label {
+    width: 50%;
+  }
+  &__input {
+    @include body-small;
+    border-radius: 8px;
+    width: 50vw;
+    padding: 8px;
+    border: 1px solid $timberwolf;
+    &:focus {
+      border: 1px solid $celadon-2;
+    }
+  }
+}
+
+.company-name,
+.job-title,
+.job-status,
+.app-date {
+  @include body-small;
+  border-radius: 8px;
+  width: 50vw;
+  padding: 8px;
+  border: 1px solid $timberwolf;
+
+  &:focus {
+    border: 1px solid $celadon-2;
+  }
+}
+
+.app-date {
+  max-width: 45vw; //FIXME: WHY DOESN:T IT WORK?
 }

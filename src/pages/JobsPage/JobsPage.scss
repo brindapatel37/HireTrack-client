@@ -1,2 +1,8 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
+
+.user-hello {
+  @include subheader;
+  font-style: bold;
+  margin: 1rem;
+}

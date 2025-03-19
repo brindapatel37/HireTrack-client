@@ -43,7 +43,7 @@ function JobsPage() {
   return (
     <>
       <Header />
-      <h1> HI Jobs Page </h1>
+      <h1 className="user-hello"> Hi Jobs Page </h1>
       <button onClick={openModal} className="create-job-button">
         + Create Job
       </button>

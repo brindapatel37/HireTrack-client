@@ -1,2 +1,7 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
+
+.user-hello {
+  @include subheader;
+  margin: 1rem;
+}
