@@ -169,6 +169,16 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
               )}
             </div>
             <div className="create-job__form-group">
+              <label className="create-job__label">Job Location </label>
+              <input
+                type="text"
+                name="job_location"
+                value={formData["job_location"]}
+                onChange={handleChange}
+                className="create-job__input"
+              />
+            </div>
+            <div className="create-job__form-group">
               <label className="create-job__label">Application Due Date</label>
               <DatePicker
                 selected={selectedDate}

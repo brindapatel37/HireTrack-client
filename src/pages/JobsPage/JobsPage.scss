@@ -33,7 +33,6 @@
 
   &:hover {
     background-color: darken($lightest-green, 10%);
-    // transform: scale(1.05);
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
   }
@@ -41,5 +40,13 @@
   &:active {
     background-color: darken($lightest-green, 15%);
     transform: scale(0.98);
+  }
+
+  @include tablet {
+    max-width: 30rem;
+  }
+
+  @include desktop {
+    max-width: 40rem;
   }
 }

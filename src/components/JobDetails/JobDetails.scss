@@ -1,2 +1,270 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
+
+.details {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  //   padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @include tablet {
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-width: 45rem;
+  }
+
+  @include desktop {
+    max-width: 60rem;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $brunswick-green;
+    color: $antiflash-white;
+    padding: 1.25rem 1rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    @include subheader;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: sticky;
+    gap: 8px;
+    top: 0;
+    z-index: 10;
+
+    @include tablet {
+      padding: 1rem 1.25rem;
+    }
+
+    &--back-link {
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+    }
+
+    &--back {
+      width: 1.5rem;
+    }
+  }
+  &__delete {
+    display: flex;
+    justify-content: center;
+
+    &--icon {
+      width: 1.5rem;
+
+      &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.25rem 1rem;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      gap: 3rem;
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include desktop {
+      width: 50%;
+    }
+  }
+
+  &__additional-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include desktop {
+      width: 50%;
+    }
+  }
+
+  &__title {
+    @include body-large;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+  }
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.5rem;
+  }
+  &__cell-label {
+    @include table-header;
+    color: $secondary-slate;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+  }
+
+  &__cell-item {
+    @include body-medium;
+    color: $primary-black;
+    padding: 0.25rem;
+    min-width: 5rem;
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken($antiflash-white, 3%);
+      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
+      align-items: center;
+
+      transition: transform 0.5s ease, box-shadow 0.2s ease;
+    }
+
+    &:active {
+      transition: transform 0.5s ease, box-shadow 0.2s ease;
+    }
+
+    &:focus {
+      border: 1px solid $celadon-2;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    @include body-medium;
+    outline: none;
+    background-color: $antiflash-white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+
+    &--notes {
+      &:active,
+      &:focus {
+        width: 20rem;
+        height: 5rem;
+      }
+    }
+
+    &--job-status {
+      &:hover {
+        background-color: darken($antiflash-white, 3%) !important;
+      }
+
+      &:focus,
+      &:active {
+        cursor: pointer !important;
+        @include labels-links-buttons;
+        font-weight: 500;
+      }
+    }
+
+    @include tablet {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      &:active,
+      &:focus {
+        width: 7rem;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+    }
+
+    @include desktop {
+      &:active,
+      &:focus {
+        width: 15rem;
+      }
+    }
+  }
+
+  &__status {
+    @include labels-links-buttons;
+    font-weight: 500;
+    align-items: center;
+    border-radius: 8px;
+    text-align: center;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+
+    &.offer-received {
+      background-color: $lightest-green;
+      color: $dark-green;
+    }
+
+    &.applied {
+      background-color: $lightest-green;
+      color: $dartmouth-green;
+    }
+
+    &.accepted {
+      background-color: $mint;
+      color: $brunswick-green;
+    }
+
+    &.rejected {
+      background-color: #ffdbdb;
+      color: #c94515;
+    }
+
+    &.other-status {
+      background-color: lighten($isabelline, 3%);
+      color: $dark-green;
+    }
+  }
+  &__name {
+    text-decoration: none;
+    color: $sea-green;
+    font-weight: 600;
+    display: flex;
+
+    &:hover {
+      color: $brunswick-green;
+    }
+  }
+}
+
+.divider {
+  border-bottom: 1px $secondary-slate solid !important;
+  width: 100%;
+
+  @include desktop {
+    display: none;
+  }
+}

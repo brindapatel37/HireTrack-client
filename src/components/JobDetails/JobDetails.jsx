@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { baseURL } from "../../scripts/utils";
-import deleteButton from "../../assets/icons/delete.svg";
+import deleteButton from "../../assets/icons/delete_white.svg";
 import editButton from "../../assets/icons/edit.svg";
 import backButton from "../../assets/icons/back.svg";
 import "./JobDetails.scss";
@@ -41,25 +41,14 @@ export default function JobDetails() {
   const handleSave = async () => {
     setEditingField(null);
 
-    // 🔥 Ensure we're using the latest state update
-    // setJob((prevJob) =>
-    //   prevJob.map((job) =>
-    //     job.id === editingField.jobId ? { ...job, ...editedJob } : job
-    //   )
-    // );
-    // console.log("Edited Job Data BEFORE API Call:", { ...editedJob });
     try {
       const updatedJob = { ...editedJob };
 
       if (updatedJob.application_date) {
         updatedJob.application_date = new Date(updatedJob.application_date)
           .toISOString()
-          .split("T")[0]; // Convert to YYYY-MM-DD
+          .split("T")[0];
       }
-
-      // setTimeout(() => {
-      //   console.log("Final Edited Job BEFORE Saving:", updatedJob);
-      // }, 0);
 
       const token = localStorage.getItem("token");
       await axios.patch(`${baseURL}/jobs/${job.id}`, updatedJob, {
@@ -68,7 +57,6 @@ export default function JobDetails() {
           "Content-Type": "application/json",
         },
       });
-      // ✅ Ensure UI reflects changes by updating `jobs`
       setJob(updatedJob);
       setEditingField(null);
     } catch (e) {
@@ -131,6 +119,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "company_name" ? (
                   <input
+                    className="details__input details__input--company"
                     type="text"
                     value={editedJob.company_name || ""}
                     onChange={(e) =>
@@ -157,6 +146,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "job_title" ? (
                   <input
+                    className="details__input details__input--title"
                     type="text"
                     value={editedJob.job_title || ""}
                     onChange={(e) =>
@@ -183,6 +173,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "job_location" ? (
                   <input
+                    className="details__input details__input--location"
                     type="text"
                     value={editedJob.job_location || ""}
                     onChange={(e) =>
@@ -209,6 +200,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "application_date" ? (
                   <input
+                    className="details__input details__input--date"
                     type="text"
                     value={editedJob.application_date || ""}
                     onChange={(e) =>
@@ -249,6 +241,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "job_status" ? (
                   <select
+                    className="details__input details__input--job-status"
                     value={editedJob.job_status || ""}
                     onChange={(e) =>
                       setEditedJob({
@@ -283,8 +276,8 @@ export default function JobDetails() {
                 onClick={() => handleFieldClick("job_description")}
               >
                 {editingField?.field === "job_description" ? (
-                  <input
-                    type="text"
+                  <textarea
+                    className="details__input details__input--description"
                     value={editedJob.job_description || ""}
                     onChange={(e) =>
                       setEditedJob({
@@ -302,6 +295,7 @@ export default function JobDetails() {
               </div>
             </div>
           </div>
+          <div className="divider"> </div>
           <div className="details__additional-info">
             <h2 className="details__title">Additional Information</h2>
             <div className="details__cell">
@@ -312,6 +306,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "recruiter_name" ? (
                   <input
+                    className="details__input details__input--name"
                     type="text"
                     value={editedJob.recruiter_name || ""}
                     onChange={(e) =>
@@ -337,6 +332,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "recruiter_email" ? (
                   <input
+                    className="details__input details__input--email"
                     type="text"
                     value={editedJob.recruiter_email || ""}
                     onChange={(e) =>
@@ -362,6 +358,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "recruiter_phone" ? (
                   <input
+                    className="details__input details__input--phone"
                     type="text"
                     value={editedJob.recruiter_phone || ""}
                     onChange={(e) =>
@@ -387,6 +384,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "salary" ? (
                   <input
+                    className="details__input details__input--salary"
                     type="number"
                     value={editedJob.salary || ""}
                     onChange={(e) =>
@@ -405,31 +403,6 @@ export default function JobDetails() {
               </div>
             </div>
             <div className="details__cell">
-              <div className="details__cell-label">Job Description </div>
-              <div
-                className="details__cell-item details__description"
-                onClick={() => handleFieldClick("job_description")}
-              >
-                {editingField?.field === "job_description" ? (
-                  <input
-                    type="text"
-                    value={editedJob.job_description || ""}
-                    onChange={(e) =>
-                      setEditedJob({
-                        ...editedJob,
-                        job_description: e.target.value,
-                      })
-                    }
-                    onBlur={handleSave}
-                    onKeyDown={(e) => e.key === "Enter" && handleSave()}
-                    autoFocus
-                  />
-                ) : (
-                  job.job_description
-                )}
-              </div>
-            </div>
-            <div className="details__cell">
               <div className="details__cell-label">Notes</div>
               <div
                 className="details__cell-item details__notes"
@@ -437,6 +410,7 @@ export default function JobDetails() {
               >
                 {editingField?.field === "notes" ? (
                   <textarea
+                    className="details__input details__input--notes"
                     value={editedJob.notes || ""}
                     onChange={(e) =>
                       setEditedJob({

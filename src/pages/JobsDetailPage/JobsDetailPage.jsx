@@ -10,7 +10,6 @@ function JobsDetailPage() {
   return (
     <>
       <Header />
-      <h1 className="user-hello"> Hi Jobs detail Page </h1>
       <JobDetails />
       <Footer />
     </>
