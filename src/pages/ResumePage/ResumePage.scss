@@ -212,30 +212,4 @@
       margin-left: auto;
     }
   }
-
-  &__response-box {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    @include body-medium;
-    outline: none;
-    background-color: white;
-    border: 1px solid $isabelline;
-    // border: none;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    width: 100%;
-    min-height: 10rem;
-
-    @include tablet {
-      // margin: auto;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      max-width: 60rem;
-      margin: auto;
-    }
-
-    @include desktop {
-      max-width: 80rem;
-    }
-  }
 }
