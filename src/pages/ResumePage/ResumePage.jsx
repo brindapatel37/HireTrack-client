@@ -9,7 +9,29 @@ import Footer from "../../components/Footer/Footer";
 function ResumePage() {
   const [resumeText, setResumeText] = useState("");
   const [jobDescription, setjobDescription] = useState("");
-  const [responseData, setResponseData] = useState(null);
+  const [responseData, setResponseData] = useState({
+    matchScore: 1,
+    strengths: ["Indicates experience as a tour guide."],
+    weaknesses: [
+      "Extremely limited information provided.",
+      "Lacks any detail regarding responsibilities, accomplishments, or specific skills.",
+      "No mention of location, contact information, or any other relevant details.",
+      "The format is unconventional and unprofessional.",
+      "Doesn't showcase any skills relevant to leading tours, managing groups, or providing excellent customer service.",
+      "The name provided appears to be incorrect.",
+    ],
+    suggestions: [
+      "Expand on your experience as a tour guide, detailing the types of tours you led, the locations, and the duration of each role.",
+      'Quantify your accomplishments whenever possible (e.g., "Led tours for an average of X people per week," "Increased positive customer feedback by Y%").',
+      "Highlight skills relevant to the job description, such as communication, leadership, problem-solving, and customer service skills.",
+      "Include your contact information (phone number, email address).",
+      "Reformat the resume to be more professional and readable. Use bullet points to list responsibilities and achievements.",
+      "Research the CN Tower and tailor your resume to demonstrate your knowledge of the attraction and its requirements for tour guides.",
+      "Address the name discrepancy and provide your accurate name.",
+    ],
+    improvedResume:
+      ' **[Jimmy McGill]**\n[Your Phone Number] | [Your Email Address] | [Your LinkedIn Profile (Optional)]\n\n**Summary**\nEnthusiastic and experienced tour guide with [Number] years of experience providing engaging and informative tours. Proven ability to connect with diverse audiences, manage groups effectively, and ensure a positive and memorable experience. Seeking a Tour Lead position at the CN Tower to utilize my passion for sharing knowledge and creating exceptional visitor experiences.\n\n**Experience**\n**Tour Guide** | [Previous Employer/Organization] | [City, Province] | [Dates of Employment (e.g., 2011 - Present)]\n*  Led tours for [Number] visitors per [Day/Week/Month], providing engaging and informative commentary.\n*  Managed group logistics, ensuring smooth and safe tour experiences.\n*  Responded to visitor questions and addressed concerns effectively.\n*  Maintained a positive and professional demeanor, creating a welcoming atmosphere.\n*  [Add another bullet point highlighting a specific achievement, e.g., "Consistently received positive feedback from tour participants, achieving an average satisfaction rating of X out of 5."]\n\n**Skills**\n*   Communication (Excellent verbal and written communication skills)\n*   Customer Service (Proven ability to provide exceptional customer service)\n*   Leadership (Experience leading and managing groups)\n*   Problem-Solving (Ability to quickly and effectively resolve issues)\n*   Public Speaking (Comfortable speaking to large groups)\n*   [Add any other relevant skills, e.g., Knowledge of local history, Fluency in multiple languages, First Aid/CPR certification]\n',
+  });
   const [error, setError] = useState({ resumeText: false });
 
   const isResumeValid = () => {
