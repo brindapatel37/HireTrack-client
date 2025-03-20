@@ -1,5 +1,6 @@
 import "./ResumePage.scss";
 import { baseURL } from "../../scripts/utils";
+import ReactMarkdown from "react-markdown";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../../components/Header/Header";
@@ -52,10 +53,8 @@ function ResumePage() {
         <div className="res-header">
           <h1 className="res-header--title"> Resume Feedback Generator </h1>
           <p className="res-header--desc">
-            {" "}
-            Receive feedback on your resume based on the job you're applying
-            for. The response will generate your resume's strengths, weaknesses,
-            a match score and provide an improved resume.
+            Receive feedback on your resume based on the job you're applying for. The response will generate your
+            resume's strengths, weaknesses, a match score and provide an improved resume.
           </p>
         </div>
         <div className="form-box">
@@ -72,13 +71,9 @@ function ResumePage() {
                     placeholder="Insert resume in text format here..."
                     value={resumeText}
                     onChange={(e) => setResumeText(e.target.value)}
-                    className={`form__resume-text ${
-                      error.resumeText ? "form--invalid" : ""
-                    } `}
+                    className={`form__resume-text ${error.resumeText ? "form--invalid" : ""} `}
                   />
-                  {error.resumeText && (
-                    <p className="error-message">Resume is required</p>
-                  )}
+                  {error.resumeText && <p className="error-message">Resume is required</p>}
                 </div>
                 <div className="form--input-box">
                   <label htmlFor="job-desc" className="form__label">
@@ -100,13 +95,22 @@ function ResumePage() {
             </div>
           </form>
         </div>
-        <div className="form__response-box">
-          {" "}
-          {responseData && <p>{responseData}</p>}
-        </div>
+        {responseData && <Response response={responseData} />}
       </div>
       <Footer />
     </>
+  );
+}
+
+function Response({ response }) {
+  return (
+    <div className="form__response-box">
+      <ReactMarkdown>{response.improvedResume}</ReactMarkdown>
+      <h2>Suggestions:</h2>
+      {response.suggestions.map((s) => (
+        <p key={s}>{s}</p>
+      ))}
+    </div>
   );
 }
 
