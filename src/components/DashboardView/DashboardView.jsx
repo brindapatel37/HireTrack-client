@@ -76,38 +76,43 @@ const StatusDashboard = () => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={chartData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="name"
-          tick={({ x, y, payload }) => {
-            const tickColor = colorMap[payload.value] || "#000000"; // Default color if not found in the map
-            return (
-              <text x={x} y={y} dy={16} textAnchor="middle" fill={tickColor}>
-                {payload.value}
-              </text>
-            );
-          }}
-        />
-        <YAxis
-          tickFormatter={(value) => `${value} jobs`}
-          domain={[0, 5]}
-          interval="preserveStartEnd"
-          ticks={[0, 1, 2, 3, 4, 5]} //FIXto tickcount after demo FIXME:
-        />
-        <Legend formatter={customLegendFormatter} />{" "}
-        {/* Apply the custom legend formatter */}
-        <Bar dataKey="value">
-          {chartData.map((entry, index) => (
-            <Cell
-              key={index}
-              fill={colorMap[entry.name]} // Set color dynamically
-            />
-          ))}
-        </Bar>
-      </BarChart>
-    </ResponsiveContainer>
+    <>
+      <div className="main__counter">
+        <p className="main__count">Total Jobs: {jobs.length}</p>
+      </div>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={chartData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="name"
+            tick={({ x, y, payload }) => {
+              const tickColor = colorMap[payload.value] || "#000000"; // Default color if not found in the map
+              return (
+                <text x={x} y={y} dy={16} textAnchor="middle" fill={tickColor}>
+                  {payload.value}
+                </text>
+              );
+            }}
+          />
+          <YAxis
+            tickFormatter={(value) => `${value} jobs`}
+            domain={[0, 5]}
+            interval="preserveStartEnd"
+            ticks={[0, 1, 2, 3, 4, 5]} //FIXto tickcount after demo FIXME:
+          />
+          <Legend formatter={customLegendFormatter} />{" "}
+          {/* Apply the custom legend formatter */}
+          <Bar dataKey="value">
+            {chartData.map((entry, index) => (
+              <Cell
+                key={index}
+                fill={colorMap[entry.name]} // Set color dynamically
+              />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </>
   );
 };
 

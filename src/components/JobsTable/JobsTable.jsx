@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { baseURL } from "../../scripts/utils";
 import deleteButton from "../../assets/icons/delete.svg";
-import editButton from "../../assets/icons/edit.svg";
 import chevronButton from "../../assets/icons/typcn--chevron-right.svg";
 import "./JobsTable.scss";
 import { Link, useParams } from "react-router-dom";
@@ -21,7 +20,7 @@ export default function JobsTable({ jobs, setJobs }) {
   const handleSave = async () => {
     setEditingField(null);
 
-    // 🔥 Ensure we're using the latest state update
+    // make sure we're using the latest state update
     setJobs((prevJobs) =>
       prevJobs.map((job) =>
         job.id === editingField.jobId ? { ...job, ...editedJob } : job
@@ -48,7 +47,7 @@ export default function JobsTable({ jobs, setJobs }) {
           "Content-Type": "application/json",
         },
       });
-      // ✅ Ensure UI reflects changes by updating `jobs`
+      // make sure UI reflects changes by updating `jobs`
       setJobs((prevJobs) =>
         prevJobs.map((job) =>
           job.id === editingField.jobId ? updatedJob : job

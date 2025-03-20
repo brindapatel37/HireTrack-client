@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import CreateJobModal from "../../components/CreateJobModal/CreateJobModal";
 import JobsTable from "../../components/JobsTable/JobsTable";
+import TasksWidget from "../../components/TasksWidget/TasksWidget";
 
 function JobsPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -54,6 +55,7 @@ function JobsPage() {
           addJob={addJob}
           fetchJobs={fetchJobs}
         />
+        <TasksWidget />
         <JobsTable jobs={jobs} setJobs={setJobs} />
       </div>
       <Footer />

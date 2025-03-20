@@ -1,0 +1,109 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.widget {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  right: 0;
+  top: 40vh;
+
+  &__close {
+    display: none;
+  }
+}
+
+.cta {
+  position: absolute;
+  top: -35px;
+  left: 85%;
+  transform: translateX(-50%);
+  z-index: 10;
+  transition: opacity 0.3s ease;
+
+  &--transparent {
+    opacity: 0.5;
+  }
+
+  &__fullview {
+    opacity: 1;
+  }
+
+  &--hidden {
+    position: unset;
+    transition: unset;
+    display: none;
+  }
+
+  &__open {
+    position: fixed;
+    right: -8rem;
+    top: 40vh;
+    opacity: 0.5;
+  }
+}
+
+.content {
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 16px;
+  width: 10rem;
+  height: 12rem;
+  background-color: #f9f4f4;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  opacity: 100%;
+  overflow-y: auto;
+  transition: opacity 0.3s ease; /* Smooth opacity transition */
+
+  &--transparent {
+    opacity: 0.5;
+  }
+
+  &__fullview {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  &--hide {
+    display: none;
+    position: unset;
+    font-family: unset;
+  }
+}
+
+strong {
+  padding: 10px 0px;
+}
+
+li {
+  list-style: none;
+  padding: 4px;
+}
+
+.summary-item {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.next-steps {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.next-steps p {
+  margin-bottom: 10px;
+}
+
+.summarized-summary {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.close__button {
+  justify-self: flex-end;
+  font-family: none;
+  transition: none;
+  cursor: pointer;
+}

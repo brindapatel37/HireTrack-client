@@ -12,6 +12,7 @@ function JobsDashboardPage() {
     <>
       <Header />
       <h1> HI Jobs Dashboard Page </h1>
+
       <StatusDashboard />
       <Footer />
     </>
