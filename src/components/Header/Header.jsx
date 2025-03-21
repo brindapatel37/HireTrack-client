@@ -36,6 +36,16 @@ const Header = () => {
               >
                 <div className="nav__text">Resume Help</div>
               </NavLink>
+              <NavLink
+                to="/login"
+                className={"nav__navlink"}
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  setToken(null);
+                }}
+              >
+                <div className="nav__text--logout">Logout</div>
+              </NavLink>
             </div>
             <NavLink
               to="/jobs"
@@ -47,16 +57,6 @@ const Header = () => {
               <div className="nav__icon">
                 <img src={home} alt="Home icon" className="nav__home" />
               </div>
-            </NavLink>
-            <NavLink
-              to="/login"
-              className={"nav__navlink"}
-              onClick={() => {
-                localStorage.removeItem("token");
-                setToken(null);
-              }}
-            >
-              <div className="nav__text">Logout</div>
             </NavLink>
           </div>
         </nav>

@@ -106,6 +106,14 @@
       &:hover {
         transform: scale(1.1);
       }
+
+      &--logout {
+        font-weight: 600;
+        transition: transform 0.2s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
     }
 
     &.active .nav__text {
