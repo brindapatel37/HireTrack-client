@@ -50,12 +50,13 @@ const Header = () => {
             </NavLink>
             <NavLink
               to="/login"
+              className={"nav__navlink"}
               onClick={() => {
                 localStorage.removeItem("token");
                 setToken(null);
               }}
             >
-              Logout
+              <div className="nav__text">Logout</div>
             </NavLink>
           </div>
         </nav>

@@ -21,7 +21,7 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
 
           {/* Default Route */}
-          <Route path="/" element={<Navigate to="/jobs" />} />
+          <Route path="/" element={<Navigate to="/register" />} />
         </Routes>
       </div>
     </BrowserRouter>

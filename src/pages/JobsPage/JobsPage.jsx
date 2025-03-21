@@ -2,7 +2,6 @@ import "./JobsPage.scss";
 import { baseURL } from "../../scripts/utils";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import CreateJobModal from "../../components/CreateJobModal/CreateJobModal";
@@ -46,7 +45,7 @@ function JobsPage() {
       <div className="page">
         <Header />
         <div className="jobs-page">
-          <h1 className="user-hello"> Hi Brinda! </h1>
+          <h1 className="user-hello"> Start tracking your jobs! </h1>
           <button onClick={openModal} className="create-job-button">
             + Create Job
           </button>

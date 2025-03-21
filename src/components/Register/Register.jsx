@@ -6,48 +6,78 @@ import axios from "axios";
 function Register() {
   const [Registered, setRegistered] = useState(false);
   const [error, setError] = useState(null);
-  //
+  const formRef = React.useRef();
   return (
     <>
-      <h1>Register for HireTrack!</h1>
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
+      <div className="register">
+        <h1 className="register__title">Register for HireTrack!</h1>
+        <form
+          ref={formRef}
+          className="register__form"
+          onSubmit={async (e) => {
+            e.preventDefault();
 
-          setError(null);
-          setRegistered(false);
+            setError(null);
+            setRegistered(false);
 
-          const name = e.target.name.value;
-          const username = e.target.username.value;
-          const password = e.target.password.value;
-          if (!username || !name || !password) {
-            alert("You need to provide all 3 pieces of information. Try again");
-            return;
-          }
+            const name = e.target.name.value;
+            const username = e.target.username.value;
+            const password = e.target.password.value;
+            if (!username || !name || !password) {
+              alert(
+                "You need to provide all 3 pieces of information. Try again"
+              );
+              return;
+            }
 
-          try {
-            // all we do here is signup.
-            await axios.post(`${baseURL}/user/register`, {
-              name,
-              username,
-              password,
-            });
-            setRegistered(true);
-          } catch (e) {
-            console.log(e);
-            setError(e?.response?.data);
-          }
-        }}
-      >
-        <input name="name" placeholder="name" />
-        <input name="username" placeholder="usename" />
-        <input name="password" placeholder="password" type="password" />
-        <button>submit</button>
-        {Registered && (
-          <div> Sign up successful, please login to HireTrack </div>
-        )}
-        {error && <div>{error}</div>}
-      </form>
+            try {
+              await axios.post(`${baseURL}/user/register`, {
+                name,
+                username,
+                password,
+              });
+              setRegistered(true);
+              formRef.current.reset();
+            } catch (e) {
+              console.log(e);
+              setError(e?.response?.data);
+            }
+          }}
+        >
+          <div className="register__input-container">
+            <input
+              name="name"
+              placeholder="Name"
+              className="register__input"
+              required
+            />
+          </div>
+          <div className="register__input-container">
+            <input
+              name="username"
+              placeholder="Username"
+              className="register__input"
+              required
+            />
+          </div>
+          <div className="register__input-container">
+            <input
+              name="password"
+              placeholder="Password"
+              type="password"
+              className="register__input"
+              required
+            />
+          </div>
+          <button className="register__submit-btn">Submit</button>
+          {Registered && (
+            <div className="register__success-message">
+              Sign up successful, please login to HireTrack.
+            </div>
+          )}
+          {error && <div className="register__error-message">{error}</div>}
+        </form>
+      </div>
     </>
   );
 }

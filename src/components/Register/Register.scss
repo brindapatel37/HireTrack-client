@@ -1,2 +1,117 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
+
+.register {
+  width: 80vw;
+  max-width: 50rem;
+  padding-bottom: 2rem;
+  background-color: $antiflash-white;
+  border-radius: 8px;
+
+  &__title {
+    @include subheader;
+    padding: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: $brunswick-green;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 30rem;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: $lightest-green;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+  &__input-container {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $sea-green;
+      transform: scaleX(0);
+      transform-origin: right center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:focus-within::after {
+      transform: scaleX(1);
+      transform-origin: left center;
+    }
+  }
+
+  &__input {
+    padding: 1rem;
+    @include labels-links-buttons;
+    border: 1px solid $timberwolf;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: $sea-green;
+    }
+  }
+
+  &__submit-btn {
+    padding: 0.8rem;
+    background-color: darken($mint, 10%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      background-color: darken($mint, 30%);
+      background-color: $sea-green;
+    }
+
+    &:active {
+      transform: scaleX(0.95);
+    }
+  }
+
+  &__success-message,
+  &__error-message {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .register__success-message {
+    @include body-small;
+    font-weight: 600;
+    background-color: $lightest-green;
+    color: $dartmouth-green;
+    border: 2px solid $celadon-2;
+  }
+
+  .register__error-message {
+    @include body-small;
+    font-weight: 600;
+    background-color: $isabelline;
+    color: #c94515;
+    border: 2px solid #f5c6cb;
+  }
+}
