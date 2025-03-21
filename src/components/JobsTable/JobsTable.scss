@@ -92,8 +92,7 @@
 
     @include tablet {
       align-items: center;
-      justify-content: flex-start; //fixed this
-
+      justify-content: flex-start;
       gap: 4px;
       padding: 0 0.15rem;
     }
