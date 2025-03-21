@@ -4,6 +4,7 @@ import axios from "axios";
 import { baseURL } from "../../scripts/utils";
 import closeButton from "../../assets/icons/typcn--times.svg";
 import notesButton from "../../assets/icons/notes-plus.svg";
+import deleteButton from "../../assets/icons/delete.svg";
 
 function TasksWidget() {
   const [expand, setExpand] = useState(false);
@@ -74,6 +75,20 @@ function TasksWidget() {
     setExpand(!expand);
   };
 
+  const handleDelete = async (taskId) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(`${baseURL}/task/${taskId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    } catch (e) {
+      console.log("Error deleting task:", e);
+    }
+  };
   return (
     <>
       <div className="notes__button" onClick={toggleExpand}>
@@ -95,7 +110,6 @@ function TasksWidget() {
           <div className="content__expand">
             {tasks.map((task) => (
               <div className="tasks__row" key={task.id}>
-                {/* Task Title */}
                 <div className="tasks__column">
                   <div
                     className="tasks__cell-item tasks__name"
@@ -121,8 +135,6 @@ function TasksWidget() {
                     )}
                   </div>
                 </div>
-
-                {/* Due Date */}
                 <div className="tasks__other">
                   <div className="tasks__column">
                     <div
@@ -149,8 +161,6 @@ function TasksWidget() {
                       )}
                     </div>
                   </div>
-
-                  {/* Task Status */}
                   <div className="tasks__column">
                     <div
                       className="tasks__cell-item tasks__status"
@@ -173,6 +183,16 @@ function TasksWidget() {
                       ) : (
                         task.task_status
                       )}
+                    </div>
+                  </div>
+                  <div className="tasks__column tasks__delete">
+                    <div className="tasks__cell">
+                      <img
+                        className="tasks__delete--icon"
+                        src={deleteButton}
+                        alt="Delete"
+                        onClick={() => handleDelete(task.id)}
+                      />
                     </div>
                   </div>
                 </div>

@@ -1,2 +1,20 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
+
+.dashboard {
+  padding: 0 1rem;
+
+  @include tablet {
+    padding: 0 2.5rem;
+  }
+}
+
+.job__counter {
+  @include subheader;
+  font-weight: 600;
+  color: $dartmouth-green;
+  padding-bottom: 1rem;
+}
+
+.job__count {
+}

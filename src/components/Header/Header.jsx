@@ -1,9 +1,13 @@
 import "./Header.scss";
 import logo from "../../assets/logo/HIRETRACK.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import home from "../../assets/icons/home.svg";
+import React, { useState } from "react";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
   return (
     <>
       <div className="nav">
@@ -43,6 +47,15 @@ const Header = () => {
               <div className="nav__icon">
                 <img src={home} alt="Home icon" className="nav__home" />
               </div>
+            </NavLink>
+            <NavLink
+              to="/login"
+              onClick={() => {
+                localStorage.removeItem("token");
+                setToken(null);
+              }}
+            >
+              Logout
             </NavLink>
           </div>
         </nav>

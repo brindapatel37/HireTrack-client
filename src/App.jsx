@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.scss";
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -8,12 +7,6 @@ import JobsDetailPage from "./pages/JobsDetailPage/JobsDetailPage.jsx";
 import RegisterPage from "./pages/RegisterPage/RegisterPage.jsx";
 import ResumePage from "./pages/ResumePage/ResumePage.jsx";
 import JobsDashboardPage from "./pages/JobsDashboardPage/JobsDashboardPage.jsx";
-
-// Temp fake user
-localStorage.setItem(
-  "token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOnRydWUsImlhdCI6MTc0MTgyOTk1MX0.qxx2n9I2Zf6UJTH1fJaFQxjhaer89hI6FsrOkd-orcc"
-);
 
 const App = () => {
   return (

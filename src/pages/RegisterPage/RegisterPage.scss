@@ -1,2 +1,82 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.register-page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    $lightest-green,
+    $celadon-2,
+    $lightest-green
+  );
+  padding: 1rem;
+  animation: fadeIn 1s ease-out;
+
+  &__content {
+    text-align: center;
+    padding: 0.5rem;
+    max-width: 600px;
+  }
+
+  &__title {
+    @include page-header;
+    color: $brunswick-green;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: slideDown 2s ease-out;
+  }
+
+  &__register {
+    animation: slideUp 2s ease-out;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-30rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(30rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

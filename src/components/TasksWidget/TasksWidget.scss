@@ -31,7 +31,7 @@
 
 .widget {
   position: fixed;
-  right: 10%;
+  right: 15%;
   background: #f9f7c9;
   border-radius: 10px;
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15);
@@ -40,6 +40,10 @@
   visibility: hidden;
   z-index: 100;
 
+  @include tablet {
+    position: fixed;
+    right: 5%;
+  }
   &__fullview {
     opacity: 1;
     visibility: visible;
@@ -55,9 +59,10 @@
 
   &__fullview {
     overflow-y: auto;
-    height: 50vh;
+    height: 45vh;
     max-height: 65vh;
     padding: 0.5rem;
+    position: relative;
   }
 
   &__expand {
@@ -97,7 +102,7 @@
     @include body-small;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease-in-out;
-    height: 10vh;
+    height: 12vh;
     max-height: 8rem;
     width: 100%;
 
@@ -172,7 +177,7 @@
       padding: 0.5rem;
       &:active,
       &:focus {
-        width: 18vh;
+        width: 17vh;
         height: 6vh;
 
         @include tablet {
@@ -184,8 +189,8 @@
   }
   &__name {
     background: #ffcc66;
-    height: 8vh;
-    width: 20vh;
+    height: 10vh;
+    width: 18vh;
     text-wrap: wrap;
     overflow-y: auto;
 
@@ -208,6 +213,24 @@
       border: none;
       background: transparent;
       cursor: pointer;
+    }
+  }
+
+  &__delete {
+    display: flex;
+    justify-content: flex-start;
+
+    &--icon {
+      max-width: 1.2rem;
+
+      &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+    }
+
+    @include tablet {
+      padding: unset;
     }
   }
 }

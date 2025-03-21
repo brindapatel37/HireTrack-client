@@ -43,22 +43,24 @@ function JobsPage() {
 
   return (
     <>
-      <Header />
-      <div className="jobs-page">
-        <h1 className="user-hello"> Hi Brinda! </h1>
-        <button onClick={openModal} className="create-job-button">
-          + Create Job
-        </button>
-        <CreateJobModal
-          isOpen={modalIsOpen}
-          closeModal={closeModal}
-          addJob={addJob}
-          fetchJobs={fetchJobs}
-        />
-        <TasksWidget />
-        <JobsTable jobs={jobs} setJobs={setJobs} />
+      <div className="page">
+        <Header />
+        <div className="jobs-page">
+          <h1 className="user-hello"> Hi Brinda! </h1>
+          <button onClick={openModal} className="create-job-button">
+            + Create Job
+          </button>
+          <CreateJobModal
+            isOpen={modalIsOpen}
+            closeModal={closeModal}
+            addJob={addJob}
+            fetchJobs={fetchJobs}
+          />
+          <TasksWidget />
+          <JobsTable jobs={jobs} setJobs={setJobs} />
+        </div>
+        <Footer className="footer" />
       </div>
-      <Footer />
     </>
   );
 }

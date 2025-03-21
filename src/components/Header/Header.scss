@@ -5,6 +5,7 @@
   padding: 1rem;
   background-color: $lightest-green;
   position: relative;
+  outline: none;
 
   @include tablet {
     padding: 1.5rem;
@@ -28,6 +29,7 @@
 
   &__logo {
     padding-bottom: 1rem;
+    outline: none;
 
     @include tablet {
       padding-bottom: unset;

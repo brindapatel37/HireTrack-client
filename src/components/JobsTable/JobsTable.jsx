@@ -71,7 +71,7 @@ export default function JobsTable({ jobs, setJobs }) {
       });
       setJobs((prevJobs) => prevJobs.filter((job) => job.id !== jobId));
     } catch (e) {
-      console.log("Error deleting warehouse:", e);
+      console.log("Error deleting job:", e);
     }
   };
 

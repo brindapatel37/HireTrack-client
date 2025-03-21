@@ -20,6 +20,7 @@
 
   @include desktop {
     max-width: 60rem;
+    margin-top: 4rem;
   }
 
   &__head {
@@ -169,11 +170,17 @@
     padding: 0.5rem;
     border-radius: 8px;
 
-    &--notes {
+    &--notes,
+    &--description {
       &:active,
       &:focus {
-        width: 20rem;
+        width: 15rem;
         height: 5rem;
+
+        @include tablet {
+          width: 30rem !important;
+          height: 5rem;
+        }
       }
     }
 

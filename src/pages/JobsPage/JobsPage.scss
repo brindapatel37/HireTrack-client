@@ -7,8 +7,15 @@
   padding-bottom: 1rem;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .jobs-page {
   padding: 1rem;
+  flex: 1;
 
   @include tablet {
     padding: 1rem 2.5rem;

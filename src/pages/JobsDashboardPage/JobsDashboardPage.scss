@@ -1,0 +1,28 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.welcome {
+  @include subheader;
+  font-style: bold;
+  padding-bottom: 1rem;
+  padding: 1rem;
+
+  @include tablet {
+    padding: 1rem 2.5rem;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.jobsdashboard-page {
+  padding: 1rem;
+  flex: 1;
+
+  @include tablet {
+    padding: 1rem 2.5rem;
+  }
+}

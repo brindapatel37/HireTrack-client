@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-
+import "./DashboardView.scss";
 import { baseURL } from "../../scripts/utils";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -17,7 +17,18 @@ import axios from "axios";
 const StatusDashboard = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true); // New state to track loading status
-  const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff8042", "#d0ed57"]; // Define the COLORS array
+  const COLORS = [
+    "#eeece8",
+    "#d8f3dcff",
+    "#b7e4c7ff",
+    "#95d5b2ff",
+    "#74c69dff",
+    "#1b4332ff",
+    "#2d6a4fff",
+    "#c94515",
+    "#232940",
+    "#5c667e",
+  ]; // Define the COLORS array
 
   async function fetchJobs() {
     try {
@@ -65,53 +76,62 @@ const StatusDashboard = () => {
 
   // Define a color map for each status
   const colorMap = {
-    Applied: "#8884d8",
-    Interview: "#82ca9d",
-    Offer: "#ffc658",
-    Rejected: "#ff8042",
+    "In-Progress": "#eeece8",
+    Applied: "#d8f3dcff",
+    Interviewing: "#b7e4c7ff",
+    "Final-Interview": "#95d5b2ff",
+    Offer: "#74c69dff",
+    Negotiating: "#1b4332ff",
+    Accepted: "#2d6a4fff",
+    Rejected: "#c94515",
+    Withdrawn: "#232940",
+    Ghosted: "#5c667e",
   };
-
   const customLegendFormatter = (value) => {
     return value === "value" ? "Status" : value; // Change "value" to "Status"
   };
 
   return (
     <>
-      <div className="main__counter">
-        <p className="main__count">Total Jobs: {jobs.length}</p>
+      <div className="dashboard">
+        <div className="job__counter">
+          <p className="job__count">Total Jobs: {jobs.length}</p>
+        </div>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis
+              dataKey="name"
+              tick={({ x, y, payload }) => {
+                const tickColor = "#000000"; // Default color if not found in the map
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    dy={16}
+                    textAnchor="middle"
+                    fill={tickColor}
+                  >
+                    {payload.value}
+                  </text>
+                );
+              }}
+            />
+            <YAxis
+              tickFormatter={(value) => `${value} jobs`}
+              domain={[0, 5]}
+              interval="preserveStartEnd"
+              ticks={[0, 1, 2, 3, 4, 5]}
+            />
+            <Legend formatter={customLegendFormatter} />{" "}
+            <Bar dataKey="value">
+              {chartData.map((entry, index) => (
+                <Cell key={index} fill={colorMap[entry.name]} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
       </div>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis
-            dataKey="name"
-            tick={({ x, y, payload }) => {
-              const tickColor = colorMap[payload.value] || "#000000"; // Default color if not found in the map
-              return (
-                <text x={x} y={y} dy={16} textAnchor="middle" fill={tickColor}>
-                  {payload.value}
-                </text>
-              );
-            }}
-          />
-          <YAxis
-            tickFormatter={(value) => `${value} jobs`}
-            domain={[0, 5]}
-            interval="preserveStartEnd"
-            ticks={[0, 1, 2, 3, 4, 5]} //FIXto tickcount after demo FIXME:
-          />
-          <Legend formatter={customLegendFormatter} />{" "}
-          {/* Apply the custom legend formatter */}
-          <Bar dataKey="value">
-            {chartData.map((entry, index) => (
-              <Cell
-                key={index}
-                fill={colorMap[entry.name]} // Set color dynamically
-              />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
     </>
   );
 };
