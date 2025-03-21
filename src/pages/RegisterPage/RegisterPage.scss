@@ -57,7 +57,7 @@
   }
 
   &__register {
-    animation: slideRight 2s ease-out;
+    animation: slideRight 1s ease-out;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -67,11 +67,9 @@
     @include body-medium;
     color: white;
     font-weight: 600;
-    // background-color: $sea-green;
     border-radius: 8px;
     margin: 1rem auto;
     padding: 1rem;
-    // max-width: 1000px;
     transition: all 0.3s ease-in-out;
     @include desktop {
       @include body-large;

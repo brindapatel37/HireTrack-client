@@ -11,13 +11,12 @@
   &__box {
     background-color: $antiflash-white;
     border-radius: 8px;
-    // justify-content: center;
     margin: auto;
     animation: fadeIn 1s ease-out;
     width: 80vw;
     max-width: 50rem;
     padding-bottom: 2rem;
-    animation: slideRight 2s ease-out;
+    animation: slideRight 1s ease-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 

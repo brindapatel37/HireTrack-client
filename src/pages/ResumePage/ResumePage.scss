@@ -48,12 +48,9 @@
 .form-box {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 1rem;
-  //   margin: 1rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  //   justify-content: space-between;
-  //   align-items: flex-start;
   width: 100%;
 
   @include tablet {
@@ -65,9 +62,6 @@
   }
 
   @include desktop {
-    // flex-direction: row;
-    // justify-content: space-around;
-    // width: unset;
     max-width: 80rem;
     padding: 2rem;
   }
@@ -95,7 +89,6 @@
     flex-direction: column;
 
     @include desktop {
-      //   justify-content: space-between;
       width: 100%;
     }
   }
@@ -146,7 +139,6 @@
     outline: none;
     background-color: $antiflash-white;
     border: 1px solid $isabelline;
-    // border: none;
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;

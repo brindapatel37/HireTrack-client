@@ -15,7 +15,7 @@
   outline: none;
   margin: auto;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 9999; /* Makes sure it's above other elements */
+  z-index: 9999;
 }
 
 .create-job-modal {
@@ -26,7 +26,6 @@
   flex-direction: column;
   margin: auto;
   max-width: 95vw;
-  // max-height: 95vh;
   z-index: 10000;
   outline: none;
   position: relative;
@@ -152,7 +151,6 @@
       margin: 1rem 0;
 
       @include desktop {
-        // display: none;
         border-right: 1px $secondary-slate solid;
         margin: 1rem;
       }
