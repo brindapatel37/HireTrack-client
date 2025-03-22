@@ -5,6 +5,7 @@ import { baseURL } from "../../scripts/utils";
 import closeButton from "../../assets/icons/typcn--times.svg";
 import notesButton from "../../assets/icons/notes-plus.svg";
 import deleteButton from "../../assets/icons/delete.svg";
+import CreateTask from "../CreateTask/CreateTask";
 
 function TasksWidget() {
   const [expand, setExpand] = useState(false);
@@ -108,6 +109,7 @@ function TasksWidget() {
             />
           </div>
           <div className="content__expand">
+            <CreateTask />
             {tasks.map((task) => (
               <div className="tasks__row" key={task.id}>
                 <div className="tasks__column">

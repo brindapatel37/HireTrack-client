@@ -25,10 +25,12 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  max-width: 95vw;
+  max-width: 90vw;
   z-index: 10000;
   outline: none;
   position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
 
   @include tablet {
     max-width: 75vw;

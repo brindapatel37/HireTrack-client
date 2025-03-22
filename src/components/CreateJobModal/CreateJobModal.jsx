@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from "../../scripts/utils";
 import ReactModal from "react-modal";
@@ -84,8 +84,6 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
         salary: formData.salary ? parseInt(formData.salary) : null,
       };
       const token = localStorage.getItem("token");
-      console.log("Token:", token);
-      console.log("Job Data Being Sent:", newJob);
 
       const response = await axios.post(`${baseURL}/jobs`, newJob, {
         headers: {
@@ -198,7 +196,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                   errors["job_status"] ? "error job-status" : "job-status"
                 }
               >
-                <option value="">{status[0]}</option>
+                {/* <option value="">{status[0]}</option> */}
                 {status.map((statusOption, index) => (
                   <option key={index} value={statusOption}>
                     {statusOption}
