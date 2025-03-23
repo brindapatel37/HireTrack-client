@@ -47,10 +47,15 @@
   &__fullview {
     opacity: 1;
     visibility: visible;
-    width: 70vw;
+    width: 75vw;
     max-width: 30rem;
     background: rgba(255, 235, 132, 0.75);
     box-shadow: 6px 8px 15px rgba(0, 0, 0, 0.3);
+
+    @include tablet {
+      width: 80vw;
+      max-width: 35rem;
+    }
   }
 }
 
@@ -102,7 +107,7 @@
     @include body-small;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease-in-out;
-    height: 12vh;
+    height: 15vh;
     max-height: 8rem;
     width: 100%;
 

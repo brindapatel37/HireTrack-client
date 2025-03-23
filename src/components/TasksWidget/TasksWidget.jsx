@@ -43,7 +43,7 @@ function TasksWidget() {
     const newStatus = e.target.value;
     setEditedTask((prev) => ({
       ...prev,
-      task_status: newStatus, // ✅ Update the edited task directly
+      task_status: newStatus,
     }));
   }
 
@@ -109,7 +109,7 @@ function TasksWidget() {
             />
           </div>
           <div className="content__expand">
-            <CreateTask />
+            <CreateTask fetchTasks={fetchTasks} />
             {tasks.map((task) => (
               <div className="tasks__row" key={task.id}>
                 <div className="tasks__column">
@@ -146,7 +146,7 @@ function TasksWidget() {
                       {editingField?.taskId === task.id &&
                       editingField?.field === "duedate" ? (
                         <input
-                          className="tasks__input"
+                          className="tasks__input due-date"
                           type="date"
                           value={editedTask.duedate}
                           onChange={(e) =>
@@ -171,7 +171,7 @@ function TasksWidget() {
                       {editingField?.taskId === task.id &&
                       editingField?.field === "task_status" ? (
                         <select
-                          className="tasks__input"
+                          className="tasks__input "
                           value={editedTask.task_status || task.task_status}
                           onChange={(e) => handleChange(e, task.id)}
                           onBlur={handleSave}

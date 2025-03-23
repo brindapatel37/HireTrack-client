@@ -5,7 +5,7 @@ import { baseURL } from "../../scripts/utils";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const CreateTask = () => {
+const CreateTask = ({ fetchTasks }) => {
   const [formData, setFormData] = useState({
     task_title: "",
     duedate: "",
@@ -42,6 +42,7 @@ const CreateTask = () => {
         task_status: "",
       });
       setSelectedDate(null);
+      fetchTasks();
     } catch (error) {
       console.error("Error creating task:", error);
       alert("Unable to create task. Please try again.");

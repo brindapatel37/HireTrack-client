@@ -257,11 +257,50 @@
   }
 }
 
-.app-date {
-  max-width: 44vw; //FIXME: WHY DOESN:T IT WORK?
-  flex-basis: 40% !important;
-}
-
 .error {
   border-color: #c94515;
+}
+
+.create-job__date-picker {
+  margin-right: 4rem;
+
+  .react-datepicker {
+    font-size: 0.85rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .react-datepicker__header {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .react-datepicker__current-month {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .react-datepicker__day {
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1.8rem;
+  }
+
+  .react-datepicker__day--selected {
+    color: white;
+  }
+}
+
+.create-job__input.app-date {
+  width: 40vw;
+  max-width: 16rem;
+  flex-basis: 40% !important;
+
+  @include tablet {
+    width: 34vw;
+    max-width: 24rem;
+  }
+
+  @include desktop {
+    width: 12rem;
+  }
 }

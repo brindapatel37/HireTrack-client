@@ -182,6 +182,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                 selected={selectedDate}
                 dateFormat="MM-dd-yyyy"
                 onChange={handleDateChange}
+                calendarClassName="create-job__date-picker"
                 className="create-job__input app-date"
                 placeholderText="Select due date"
               />
@@ -196,7 +197,6 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
                   errors["job_status"] ? "error job-status" : "job-status"
                 }
               >
-                {/* <option value="">{status[0]}</option> */}
                 {status.map((statusOption, index) => (
                   <option key={index} value={statusOption}>
                     {statusOption}
