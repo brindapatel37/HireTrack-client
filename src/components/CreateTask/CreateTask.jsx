@@ -9,7 +9,7 @@ const CreateTask = ({ fetchTasks }) => {
   const [formData, setFormData] = useState({
     task_title: "",
     duedate: "",
-    task_status: "",
+    task_status: "To Do",
   });
 
   const [status, setStatus] = useState([
@@ -76,7 +76,7 @@ const CreateTask = ({ fetchTasks }) => {
             <div className="create-task__form-group">
               <select
                 name="task_status"
-                value={formData["task_status"]}
+                value={formData.task_status || "To Do"}
                 onChange={handleChange}
                 className="task_status"
                 placeholder="Status"

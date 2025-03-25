@@ -20,7 +20,6 @@ export default function JobsTable({ jobs, setJobs }) {
   const handleSave = async () => {
     setEditingField(null);
 
-    // make sure we're using the latest state update
     setJobs((prevJobs) =>
       prevJobs.map((job) =>
         job.id === editingField.jobId ? { ...job, ...editedJob } : job
@@ -47,7 +46,7 @@ export default function JobsTable({ jobs, setJobs }) {
           "Content-Type": "application/json",
         },
       });
-      // make sure UI reflects changes by updating `jobs`
+
       setJobs((prevJobs) =>
         prevJobs.map((job) =>
           job.id === editingField.jobId ? updatedJob : job

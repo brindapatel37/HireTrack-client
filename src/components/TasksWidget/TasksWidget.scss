@@ -32,6 +32,7 @@
 .widget {
   position: fixed;
   right: 15%;
+  top: 20%;
   background: #f9f7c9;
   border-radius: 10px;
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15);
@@ -74,6 +75,9 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow-y: auto;
+    height: 45vh;
+    max-height: 65vh;
   }
 }
 

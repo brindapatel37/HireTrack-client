@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ResumeResponse from "../../components/ResumeResponse/ResumeResponse";
+import TasksWidget from "../../components/TasksWidget/TasksWidget";
 
 function ResumePage() {
   const [resumeText, setResumeText] = useState("");
@@ -50,6 +51,7 @@ function ResumePage() {
     <>
       <div className="page">
         <Header />
+        <TasksWidget />
         <div className="resume">
           <div className="res-header">
             <h1 className="res-header--title"> Resume Feedback Generator </h1>
@@ -104,6 +106,7 @@ function ResumePage() {
           </div>
           {responseData && <ResumeResponse response={responseData} />}
         </div>
+
         <Footer />
       </div>
     </>

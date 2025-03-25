@@ -34,9 +34,6 @@
     }
   }
 
-  &__section {
-  }
-
   &__form-group {
     width: 100%;
     max-width: 25rem;
@@ -109,12 +106,9 @@
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   }
-  .react-datepicker__month-container {
-    // width: 30vw;
-    // margin: -1rem;
-  }
+
   .react-datepicker__header {
-    background: #ffeb84; // Match the sticky note theme
+    background: #ffeb84;
     border-bottom: 1px solid #ddd;
   }
 

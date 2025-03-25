@@ -40,10 +40,10 @@ function TasksWidget() {
   };
 
   function handleChange(e, taskId) {
-    const newStatus = e.target.value;
+    const { value } = e.target;
     setEditedTask((prev) => ({
       ...prev,
-      task_status: newStatus,
+      task_status: value,
     }));
   }
 
@@ -52,15 +52,18 @@ function TasksWidget() {
     console.log(taskStatus[3]);
     setEditingField(null);
 
+    const updatedTask = { ...editedTask }; // Copy latest changes
+    setEditingField(null);
+
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
-        task.id === editingField.taskId ? { ...task, ...editedTask } : task
+        task.id === editingField.taskId ? { ...task, ...updatedTask } : task
       )
     );
 
     try {
       const token = localStorage.getItem("token");
-      await axios.patch(`${baseURL}/task/${editingField.taskId}`, editedTask, {
+      await axios.patch(`${baseURL}/task/${editingField.taskId}`, updatedTask, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -172,7 +175,7 @@ function TasksWidget() {
                       editingField?.field === "task_status" ? (
                         <select
                           className="tasks__input "
-                          value={editedTask.task_status || task.task_status}
+                          value={editedTask.task_status ?? task.task_status}
                           onChange={(e) => handleChange(e, task.id)}
                           onBlur={handleSave}
                           autoFocus
