@@ -12,7 +12,12 @@ const CreateTask = ({ fetchTasks }) => {
     task_status: "",
   });
 
-  const [status, setStatus] = useState(["To Do", "In-progress", "Done"]);
+  const [status, setStatus] = useState([
+    "To Do",
+    "In-progress",
+    "Blocked",
+    "Done",
+  ]);
 
   const [selectedDate, setSelectedDate] = useState(null);
   const handleDateChange = (date) => {
