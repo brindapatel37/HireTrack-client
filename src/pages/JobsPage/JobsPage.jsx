@@ -22,7 +22,6 @@ function JobsPage() {
   async function fetchJobs() {
     try {
       const token = localStorage.getItem("token");
-      console.log("Token:", token);
 
       const { data } = await axios.get(`${baseURL}/jobs`, {
         headers: {

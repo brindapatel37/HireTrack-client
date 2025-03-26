@@ -18,7 +18,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
     job_title: "",
     job_location: "",
     application_date: "",
-    job_status: "",
+    job_status: "In-progress",
     job_description: "",
     recruiter_phone: "",
     recruiter_email: "",
@@ -177,7 +177,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
               />
             </div>
             <div className="create-job__form-group">
-              <label className="create-job__label">Application Due Date</label>
+              <label className="create-job__label">Application Due Date*</label>
               <DatePicker
                 selected={selectedDate}
                 dateFormat="MM-dd-yyyy"
@@ -191,7 +191,7 @@ const CreateJobModal = ({ isOpen, closeModal, addJob, fetchJobs }) => {
               <label className="create-job__label">Application Status* </label>
               <select
                 name="job_status"
-                value={formData["job_status"]}
+                value={formData.job_status || "In-progress"}
                 onChange={handleChange}
                 className={
                   errors["job_status"] ? "error job-status" : "job-status"

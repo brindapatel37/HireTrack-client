@@ -49,10 +49,9 @@ function TasksWidget() {
 
   const handleSave = async () => {
     if (!editingField) return;
-    console.log(taskStatus[3]);
     setEditingField(null);
 
-    const updatedTask = { ...editedTask }; // Copy latest changes
+    const updatedTask = { ...editedTask };
     setEditingField(null);
 
     setTasks((prevTasks) =>
