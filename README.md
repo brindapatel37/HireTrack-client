@@ -52,7 +52,8 @@ Job hunting is stressful, and juggling multiple applications can be overwhelming
 
 ### **Backend:**
 - Node.js, Express.js, MySQL, Knex.js, JWT (JSON Web Token)  
-- Backend accessible at: [HireTrack Server](hiretrack-server)  
+👉 <a href=https://github.com/brindapatel37/hiretrack-server>Checkout the backend project</a>
+</div>
 
 ### **APIs & Integrations:**
 - **Gemini API** – AI-powered resume feedback  
